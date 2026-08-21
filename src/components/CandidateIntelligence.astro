@@ -1,0 +1,228 @@
+---
+const features = [
+  {
+    id: 'scorecard',
+    title: 'Structured Scorecards',
+    desc: 'Every candidate gets a multi-dimensional scorecard covering aptitude, technical depth, coding performance, and communication.',
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="3" y="2" width="14" height="16" rx="2"/><path d="M7 7h6M7 11h6M7 15h3"/></svg>`,
+  },
+  {
+    id: 'evidence',
+    title: 'AI Evidence Extraction',
+    desc: 'The AI reads across every answer and response to produce specific evidence statements — not just a score.',
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M10 3v14M3 10h14"/><circle cx="10" cy="10" r="7"/></svg>`,
+  },
+  {
+    id: 'adaptive',
+    title: 'Adaptive Signals',
+    desc: 'The adaptive engine\'s trajectory tells you the candidate\'s performance ceiling — not just where they stopped.',
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M3 15l4-4 4 2 6-8"/></svg>`,
+  },
+  {
+    id: 'ranking',
+    title: 'Ranked Shortlisting',
+    desc: 'All candidates for a role are auto-ranked by combined signals. Your shortlist is ready before you open a single CV.',
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M4 16h2v-6H4zM9 16h2V8H9zM14 16h2V4h-2z"/></svg>`,
+  },
+  {
+    id: 'interview',
+    title: 'Interview Signals',
+    desc: 'Communication quality, structure, specificity, and confidence are measured from video responses.',
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M14 9l5-3v8l-5-3M3 7h11v7a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"/></svg>`,
+  },
+];
+---
+
+<section id="intelligence" class="relative overflow-hidden bg-navy py-28">
+  <!-- Subtle radial glow overlays (atmospheric depth) -->
+  <div class="pointer-events-none absolute left-0 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/8 blur-[120px]"></div>
+  <div class="pointer-events-none absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/3 translate-y-1/3 rounded-full bg-primary/6 blur-[100px]"></div>
+  <!-- Subtle noise grain overlay -->
+  <div class="pointer-events-none absolute inset-0 opacity-[0.03]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-size: 200px;"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6">
+    <!-- Section header -->
+    <div class="mb-16 text-center">
+      <span class="mb-5 inline-block rounded-pill border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white/60">
+        Candidate Intelligence
+      </span>
+      <h2 class="text-[40px] sm:text-[52px] lg:text-[60px] font-black leading-[1.08] tracking-tight text-white">
+        Stop guessing.<br />
+        <span class="text-primary">Hire with evidence.</span>
+      </h2>
+      <p class="mx-auto mt-5 max-w-xl text-lg font-medium leading-relaxed text-white/50">
+        Every assessment generates a structured candidate scorecard — with skill evidence, performance signals, and AI-generated insights your team can actually act on.
+      </p>
+    </div>
+
+    <!-- Main content: feature nav left + scorecard right -->
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
+
+      <!-- Left: feature list (sticky) -->
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-24 space-y-2" id="intel-nav">
+          {features.map((f, i) => (
+            <button
+              class={`intel-feature-btn group w-full flex items-start gap-4 rounded-2xl p-5 text-left transition-all ${i === 0 ? 'bg-white/10 border border-white/15' : 'border border-transparent hover:bg-white/5'}`}
+              data-feature={f.id}
+            >
+              <div class={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl ${i === 0 ? 'bg-primary text-white' : 'bg-white/10 text-white/40 group-hover:bg-primary/20 group-hover:text-primary'} transition-all`}>
+                <div class="h-4 w-4" set:html={f.icon} />
+              </div>
+              <div>
+                <p class={`text-sm font-bold ${i === 0 ? 'text-white' : 'text-white/50 group-hover:text-white/80'} transition-colors`}>{f.title}</p>
+                <p class={`mt-0.5 text-xs font-medium leading-relaxed ${i === 0 ? 'text-white/60' : 'text-white/30 group-hover:text-white/50'} transition-colors`}>{f.desc}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: scorecard visual -->
+      <div class="lg:col-span-8">
+        <div class="overflow-hidden rounded-2xl border border-white/10 bg-navy-mid">
+
+          <!-- Candidate header strip -->
+          <div class="border-b border-white/8 bg-white/3 px-6 py-4">
+            <div class="flex items-center justify-between flex-wrap gap-3">
+              <div class="flex items-center gap-4">
+                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-blue-700 text-sm font-black text-white shadow-glow-blue">P</div>
+                <div>
+                  <p class="text-base font-black text-white">Priya Sharma</p>
+                  <p class="text-xs text-white/40">Frontend Engineer · Assessed 2 hours ago</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="text-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2.5">
+                  <div class="text-2xl font-black text-emerald-400">9.2</div>
+                  <div class="text-[9px] font-bold uppercase tracking-wider text-emerald-400/70">Overall</div>
+                </div>
+                <div class="text-center rounded-xl border border-white/10 bg-white/5 px-4 py-2.5">
+                  <div class="text-xl font-black text-white">#1</div>
+                  <div class="text-[9px] font-bold uppercase tracking-wider text-white/30">Rank</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Score grid -->
+          <div class="grid grid-cols-2 gap-px bg-white/5 sm:grid-cols-4">
+            {[
+              { label: 'Aptitude', score: 88, sub: '32nd percentile', color: 'text-blue-400', bar: 'bg-blue-500' },
+              { label: 'Adaptive Tech', score: 94, sub: 'Expert difficulty', color: 'text-amber-400', bar: 'bg-amber-500' },
+              { label: 'AI Interview', score: 87, sub: 'High structure', color: 'text-violet-400', bar: 'bg-violet-500' },
+              { label: 'Coding', score: 91, sub: 'O(n) solutions', color: 'text-emerald-400', bar: 'bg-emerald-500' },
+            ].map(s => (
+              <div class="bg-navy-mid p-5">
+                <div class={`mb-1 text-2xl font-black ${s.color}`}>{s.score}%</div>
+                <div class="mb-1 text-xs font-bold text-white/70">{s.label}</div>
+                <div class="text-[10px] text-white/30 mb-2">{s.sub}</div>
+                <div class="h-1 rounded-full bg-white/8">
+                  <div class={`h-full rounded-full ${s.bar}`} style={`width:${s.score}%`}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Evidence section -->
+          <div class="border-t border-white/8 p-6">
+            <div class="mb-4 flex items-center gap-2">
+              <p class="text-xs font-bold uppercase tracking-widest text-white/40">AI-Generated Evidence</p>
+              <div class="flex items-center gap-1 rounded-pill bg-primary/20 border border-primary/20 px-2 py-0.5">
+                <div class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></div>
+                <span class="text-[9px] font-bold text-primary">AI</span>
+              </div>
+            </div>
+            <div class="space-y-2.5">
+              {[
+                {
+                  type: 'strength',
+                  icon: '✓',
+                  color: 'text-emerald-400',
+                  bg: 'bg-emerald-500/8 border-emerald-500/15',
+                  text: 'Demonstrated O(n) hash map optimization unprompted during coding assessment — applied it correctly across 3 of 4 problems.',
+                },
+                {
+                  type: 'strength',
+                  icon: '✓',
+                  color: 'text-emerald-400',
+                  bg: 'bg-emerald-500/8 border-emerald-500/15',
+                  text: 'AI interview responses showed structured reasoning. Used quantifiable outcomes in 2 of 3 answers without being prompted.',
+                },
+                {
+                  type: 'strength',
+                  icon: '✓',
+                  color: 'text-emerald-400',
+                  bg: 'bg-emerald-500/8 border-emerald-500/15',
+                  text: 'Adaptive assessment reached Expert difficulty by Q3 — performance ceiling is above the standard Frontend Engineer requirement.',
+                },
+                {
+                  type: 'explore',
+                  icon: '↗',
+                  color: 'text-amber-400',
+                  bg: 'bg-amber-500/8 border-amber-500/15',
+                  text: 'Leadership examples were surface-level. Recommend one structured question in the final interview on team decision-making.',
+                },
+              ].map(ev => (
+                <div class={`flex items-start gap-3 rounded-xl border p-3.5 ${ev.bg}`}>
+                  <span class={`flex-shrink-0 text-sm font-black ${ev.color}`}>{ev.icon}</span>
+                  <p class="text-xs font-medium leading-relaxed text-white/75">{ev.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Bottom action bar -->
+          <div class="border-t border-white/8 bg-white/3 flex items-center justify-between gap-4 px-6 py-4 flex-wrap">
+            <p class="text-xs font-semibold text-primary">AI Recommendation: <span class="text-white/80">Strong hire for Frontend Engineer. Prioritize for final round.</span></p>
+            <div class="flex gap-3">
+              <button class="rounded-pill border border-white/10 px-4 py-2 text-xs font-bold text-white/60 hover:bg-white/5 transition-colors">Export PDF</button>
+              <button class="rounded-pill bg-primary px-4 py-2 text-xs font-bold text-white hover:bg-primary-dark transition-colors shadow-card-blue">Schedule Interview</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leaderboard preview -->
+        <div class="mt-5 overflow-hidden rounded-2xl border border-white/10 bg-navy-mid p-5">
+          <p class="mb-3 text-xs font-bold uppercase tracking-widest text-white/30">Role Shortlist — Frontend Engineer (Top 5 of 89)</p>
+          <div class="space-y-2">
+            {[
+              { rank: 1, name: 'Priya Sharma', score: 9.2, badge: 'Top Match', color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20' },
+              { rank: 2, name: 'Rahul Gupta', score: 8.7, badge: 'Strong', color: 'text-blue-400', bg: 'bg-blue-500/10 border-blue-500/20' },
+              { rank: 3, name: 'Anita Patel', score: 8.1, badge: 'Good', color: 'text-indigo-400', bg: 'bg-indigo-500/10 border-indigo-500/20' },
+              { rank: 4, name: 'Suresh Kumar', score: 7.8, badge: 'Review', color: 'text-white/50', bg: 'bg-white/5 border-white/10' },
+              { rank: 5, name: 'Meera Iyer', score: 7.4, badge: 'Review', color: 'text-white/50', bg: 'bg-white/5 border-white/10' },
+            ].map(c => (
+              <div class={`flex items-center gap-4 rounded-xl border px-4 py-3 ${c.bg}`}>
+                <span class="w-5 text-center text-xs font-black text-white/30">{c.rank}</span>
+                <div class="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-primary to-blue-700 text-[10px] font-black text-white">{c.name[0]}</div>
+                <span class="flex-1 text-sm font-semibold text-white">{c.name}</span>
+                <span class={`text-sm font-black ${c.color}`}>{c.score}</span>
+                <span class={`rounded-pill px-2.5 py-0.5 text-[10px] font-bold border ${c.bg} ${c.color}`}>{c.badge}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-16 text-center">
+      <p class="mb-6 text-lg font-medium text-white/50">See what your next candidate scorecard looks like.</p>
+      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="http://localhost:5173/employer/signup"
+          class="rounded-pill bg-primary px-8 py-3.5 text-sm font-bold text-white shadow-card-blue hover:bg-primary-dark hover:-translate-y-0.5 transition-all"
+        >
+          Start Evaluating Candidates
+        </a>
+        <a
+          href="http://localhost:5173/book-demo"
+          class="rounded-pill border border-white/15 px-8 py-3.5 text-sm font-bold text-white/70 hover:bg-white/5 hover:text-white transition-all"
+        >
+          See a Sample Scorecard →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

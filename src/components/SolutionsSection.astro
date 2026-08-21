@@ -1,0 +1,234 @@
+---
+const solutions = [
+  {
+    id: 'corporate',
+    label: 'Corporate HR',
+    headline: 'Hire faster without growing your HR team.',
+    desc: 'From bulk resume screening to a ranked shortlist — QuickRuit automates first-round evaluation so your recruiters spend time on the decisions that matter, not the screening.',
+    benefits: [
+      'Invite hundreds of candidates with one link',
+      'AI-assessed aptitude + technical in 24–48 hours',
+      'Ranked shortlist with evidence — ready before you open a CV',
+      'Integrates with your existing ATS workflow',
+    ],
+    replaces: ['Manual CV screening', 'Generic aptitude platforms', 'Phone screening rounds'],
+    cta: 'Explore Corporate Solution',
+    color: 'border-primary/20 bg-primary-light',
+    labelColor: 'text-primary',
+    accent: 'bg-primary',
+  },
+  {
+    id: 'campus',
+    label: 'Campus Placement',
+    headline: 'Run placement drives that scale with your college.',
+    desc: 'QuickRuit\'s campus model is built for placement officers — not just recruiters. Run drives for 200+ students, track cohort performance, and generate role-specific readiness reports.',
+    benefits: [
+      'Structured drives for any batch size',
+      'Student performance tracking across multiple roles',
+      'Placement readiness reports for each student',
+      'No ATS required — standalone campus portal',
+    ],
+    replaces: ['Paper-based assessments', 'Third-party test platforms', 'Manual shortlisting'],
+    cta: 'Explore Campus Solution',
+    color: 'border-emerald-200 bg-emerald-50',
+    labelColor: 'text-emerald-600',
+    accent: 'bg-emerald-500',
+  },
+  {
+    id: 'staffing',
+    label: 'Staffing Agencies',
+    headline: 'Deliver pre-verified candidates to clients, faster.',
+    desc: 'Add structured assessment to your pipeline. Send clients candidates who have been objectively evaluated — with scorecards and evidence — not just screened resumes.',
+    benefits: [
+      'White-label assessment portal for your brand',
+      'Pre-screen hundreds of candidates per role',
+      'Share scorecards directly with clients',
+      'Per-drive or credit-based pricing for flexibility',
+    ],
+    replaces: ['Resume-only delivery', 'Client-side phone screens', 'Subjective shortlisting'],
+    cta: 'Explore Staffing Solution',
+    color: 'border-violet-200 bg-violet-50',
+    labelColor: 'text-violet-600',
+    accent: 'bg-violet-500',
+  },
+];
+---
+
+<section id="solutions" class="bg-surface-blue py-24">
+  <div class="mx-auto max-w-7xl px-6">
+
+    <!-- Header -->
+    <div class="mb-14 text-center">
+      <span class="mb-4 inline-block rounded-pill border border-primary/20 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+        Solutions
+      </span>
+      <h2 class="text-[40px] sm:text-[48px] font-black leading-[1.1] tracking-tight text-on-surface">
+        Built for every hiring team.
+      </h2>
+      <p class="mx-auto mt-5 max-w-lg text-lg font-medium text-on-surface-muted">
+        Corporate recruiters, campus placement officers, and staffing agencies — each with a workflow that fits their needs.
+      </p>
+    </div>
+
+    <!-- Tab buttons -->
+    <div id="solution-tabs" class="mb-10 flex flex-wrap justify-center gap-2">
+      {solutions.map((s, i) => (
+        <button
+          class={`solution-tab rounded-pill px-6 py-2.5 text-sm font-bold transition-all ${i === 0 ? 'bg-primary text-white shadow-card-blue' : 'border border-border bg-white text-on-surface-muted hover:border-primary/30 hover:text-primary'}`}
+          data-solution={s.id}
+        >
+          {s.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Solution panels -->
+    {solutions.map((s, i) => (
+      <div
+        id={`solution-${s.id}`}
+        class={`solution-panel ${i !== 0 ? 'hidden' : ''}`}
+      >
+        <div class={`overflow-hidden rounded-2xl border ${s.color}`}>
+          <div class="grid grid-cols-1 gap-0 lg:grid-cols-2">
+
+            <!-- Left: content -->
+            <div class="p-8 lg:p-12">
+              <p class={`mb-3 text-[10px] font-black uppercase tracking-widest ${s.labelColor}`}>{s.label}</p>
+              <h3 class="mb-4 text-2xl font-black leading-tight tracking-tight text-on-surface sm:text-3xl">
+                {s.headline}
+              </h3>
+              <p class="mb-8 text-base font-medium leading-relaxed text-on-surface-muted">{s.desc}</p>
+
+              <div class="mb-6">
+                <p class="mb-3 text-xs font-bold uppercase tracking-wider text-on-surface-muted">What it does for you</p>
+                <ul class="space-y-2.5">
+                  {s.benefits.map(b => (
+                    <li class="flex items-start gap-3">
+                      <div class={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full ${s.accent}`}>
+                        <svg class="h-3 w-3 text-white" viewBox="0 0 12 12" fill="none">
+                          <path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                      <span class="text-sm font-semibold text-on-surface">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="mb-8">
+                <p class="mb-3 text-xs font-bold uppercase tracking-wider text-on-surface-muted">Replaces</p>
+                <div class="flex flex-wrap gap-2">
+                  {s.replaces.map(r => (
+                    <span class="flex items-center gap-1.5 rounded-pill border border-border bg-white px-3 py-1 text-xs font-semibold text-on-surface-muted">
+                      <span class="text-red-400 font-bold">✗</span> {r}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <a
+                href="/book-demo"
+                class={`inline-flex items-center gap-2 rounded-pill ${s.accent} px-7 py-3 text-sm font-bold text-white shadow-sm hover:-translate-y-0.5 hover:shadow-card transition-all`}
+              >
+                {s.cta}
+                <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </a>
+            </div>
+
+            <!-- Right: metric cards -->
+            <div class="flex flex-col justify-center gap-5 border-t border-border bg-white/40 p-8 lg:border-t-0 lg:border-l lg:p-12">
+              {s.id === 'corporate' && (
+                <div class="space-y-4">
+                  {[
+                    { label: 'Avg time to shortlist', before: '3 weeks', after: '48 hours', icon: '⏱️' },
+                    { label: 'Screening capacity', before: '50 CVs/week', after: '1,000+ CVs/drive', icon: '📊' },
+                    { label: 'Recruiter hours freed', before: '23 hrs/week', after: '~4 hrs/week', icon: '🎯' },
+                  ].map(m => (
+                    <div class="rounded-xl border border-border bg-white p-5">
+                      <p class="mb-3 text-sm font-bold text-on-surface">{m.icon} {m.label}</p>
+                      <div class="flex items-center gap-3">
+                        <div class="flex-1 rounded-lg bg-red-50 border border-red-100 p-3 text-center">
+                          <p class="text-[10px] text-red-400 font-bold uppercase mb-0.5">Before</p>
+                          <p class="text-sm font-black text-on-surface line-through decoration-red-400">{m.before}</p>
+                        </div>
+                        <svg class="h-4 w-4 flex-shrink-0 text-on-surface-muted" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <div class="flex-1 rounded-lg bg-emerald-50 border border-emerald-100 p-3 text-center">
+                          <p class="text-[10px] text-emerald-600 font-bold uppercase mb-0.5">After</p>
+                          <p class="text-sm font-black text-emerald-700">{m.after}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {s.id === 'campus' && (
+                <div class="space-y-4">
+                  {[
+                    { label: 'Students per drive', val: '500+', sub: 'assessed in one session', icon: '🎓' },
+                    { label: 'Time to results', val: '24 hrs', sub: 'from drive completion', icon: '⚡' },
+                    { label: 'Placement reports', val: '100%', sub: 'automated per student', icon: '📋' },
+                  ].map(m => (
+                    <div class="rounded-xl border border-border bg-white p-5 flex items-center gap-4">
+                      <div class="text-3xl">{m.icon}</div>
+                      <div>
+                        <p class="text-2xl font-black text-on-surface">{m.val}</p>
+                        <p class="text-xs font-semibold text-on-surface-muted">{m.label}</p>
+                        <p class="text-[10px] text-on-surface-muted/60">{m.sub}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {s.id === 'staffing' && (
+                <div class="space-y-4">
+                  {[
+                    { label: 'Candidate delivery time', val: '2× faster', sub: 'with pre-assessed candidates', icon: '🚀' },
+                    { label: 'Client rejection rate', val: '−60%', sub: 'with scorecards vs resume-only', icon: '📉' },
+                    { label: 'Assessments per role', val: 'Unlimited', sub: 'on credit or per-drive plans', icon: '🔄' },
+                  ].map(m => (
+                    <div class="rounded-xl border border-border bg-white p-5 flex items-center gap-4">
+                      <div class="text-3xl">{m.icon}</div>
+                      <div>
+                        <p class="text-2xl font-black text-on-surface">{m.val}</p>
+                        <p class="text-xs font-semibold text-on-surface-muted">{m.label}</p>
+                        <p class="text-[10px] text-on-surface-muted/60">{m.sub}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.solution-tab');
+  const panels = document.querySelectorAll<HTMLElement>('.solution-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.solution;
+
+      tabs.forEach(t => {
+        const isActive = t.dataset.solution === target;
+        if (isActive) {
+          t.className = 'solution-tab rounded-pill px-6 py-2.5 text-sm font-bold transition-all bg-primary text-white shadow-card-blue';
+        } else {
+          t.className = 'solution-tab rounded-pill px-6 py-2.5 text-sm font-bold transition-all border border-border bg-white text-on-surface-muted hover:border-primary/30 hover:text-primary';
+        }
+      });
+
+      panels.forEach(panel => {
+        if (panel.id === `solution-${target}`) {
+          panel.classList.remove('hidden');
+        } else {
+          panel.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

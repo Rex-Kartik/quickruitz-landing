@@ -1,0 +1,135 @@
+---
+const stats = [
+  {
+    number: '78%',
+    label: 'of bad hires',
+    context: 'could have been caught with better skills assessment before the offer',
+    color: 'border-red-200 bg-red-50',
+    numberColor: 'text-red-500',
+  },
+  {
+    number: '23hrs',
+    label: 'per week',
+    context: 'the average recruiter spends on manual resume screening — time that could be saved',
+    color: 'border-amber-200 bg-amber-50',
+    numberColor: 'text-amber-600',
+  },
+  {
+    number: '1 in 3',
+    label: 'candidates',
+    context: 'exaggerates qualifications on their resume, making gut-feel hiring risky',
+    color: 'border-orange-200 bg-orange-50',
+    numberColor: 'text-orange-500',
+  },
+];
+---
+
+<section class="bg-white py-24" id="how-it-works">
+  <div class="mx-auto max-w-7xl px-6">
+
+    <!-- Section header -->
+    <div class="mb-16 max-w-2xl">
+      <span class="mb-4 inline-block rounded-pill border border-on-surface/15 bg-surface px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-on-surface-muted">
+        The Problem
+      </span>
+      <h2 class="text-[40px] sm:text-[48px] font-black leading-[1.1] tracking-tight text-on-surface">
+        Most hiring still runs<br />
+        on <span class="text-on-surface-muted line-through decoration-red-400 decoration-2">gut feeling.</span>
+      </h2>
+      <p class="mt-5 max-w-xl text-lg font-medium leading-relaxed text-on-surface-muted">
+        Resumes tell you what candidates claim. Interviews surface who's confident. Neither tells you who can actually do the work.
+      </p>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="mb-16 grid grid-cols-1 gap-5 sm:grid-cols-3">
+      {stats.map(s => (
+        <div class={`rounded-2xl border p-8 transition-all hover:-translate-y-1 hover:shadow-card ${s.color}`}>
+          <div class={`mb-1 text-5xl font-black ${s.numberColor}`}>{s.number}</div>
+          <div class="mb-2 text-sm font-bold text-on-surface">{s.label}</div>
+          <p class="text-sm font-medium leading-relaxed text-on-surface-muted">{s.context}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- "The shift" content block -->
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+      <!-- Left: before/after -->
+      <div class="space-y-4">
+        <!-- Before -->
+        <div class="rounded-2xl border border-border bg-surface p-6">
+          <div class="mb-4 flex items-center gap-2">
+            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-red-100">
+              <svg class="h-3.5 w-3.5 text-red-500" viewBox="0 0 14 14" fill="none">
+                <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-wider text-on-surface-muted">The Old Way</span>
+          </div>
+          <ul class="space-y-2.5 text-sm text-on-surface-muted font-medium">
+            {['Post job → collect 500 resumes', 'Skim manually for 3 weeks', 'Phone screen based on CV quality', 'Interview gut-feel shortlist', 'Hire, hope for the best'].map(item => (
+              <li class="flex items-start gap-2.5">
+                <span class="mt-0.5 text-red-400 flex-shrink-0">—</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- After -->
+        <div class="rounded-2xl border border-primary/20 bg-primary/5 p-6">
+          <div class="mb-4 flex items-center gap-2">
+            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-primary/15">
+              <svg class="h-3.5 w-3.5 text-primary" viewBox="0 0 14 14" fill="none">
+                <path d="M2.5 7l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">The QuickRuit Way</span>
+          </div>
+          <ul class="space-y-2.5 text-sm font-medium text-on-surface">
+            {[
+              'Post job → candidates auto-invited to assess',
+              'Aptitude + adaptive technical assessment',
+              'AI-evaluated async video interview',
+              'Candidate Intelligence scorecard with evidence',
+              'Hire with confidence — not guesswork',
+            ].map(item => (
+              <li class="flex items-start gap-2.5">
+                <span class="mt-0.5 text-primary flex-shrink-0">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: key message -->
+      <div>
+        <h3 class="mb-5 text-[32px] font-black leading-[1.15] tracking-tight text-on-surface">
+          Skills don't lie.<br />
+          <span class="text-primary">Resumes do.</span>
+        </h3>
+        <p class="mb-8 text-lg font-medium leading-relaxed text-on-surface-muted">
+          QuickRuit replaces gut-feel with evidence. Every candidate goes through structured assessment and their performance generates a scorecard you can actually act on.
+        </p>
+        <div class="space-y-4">
+          {[
+            { title: 'Assess on real skills', desc: 'Role-specific aptitude and technical questions, not generic IQ tests.' },
+            { title: 'Adapt to each candidate', desc: 'Difficulty changes based on performance — so you understand their ceiling.' },
+            { title: 'Generate evidence', desc: 'AI extracts signals from every test, answer, and interview response.' },
+          ].map(point => (
+            <div class="flex items-start gap-4">
+              <div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                <div class="h-2 w-2 rounded-full bg-primary"></div>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-on-surface">{point.title}</div>
+                <div class="text-sm font-medium text-on-surface-muted">{point.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
