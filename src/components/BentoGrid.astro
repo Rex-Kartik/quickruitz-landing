@@ -1,0 +1,60 @@
+---
+const features = [
+  {
+    icon: "🎯",
+    label: "Intelligent ATS",
+    title: "Automated candidate shortlisting.",
+    desc: "Your AI-ranked talent pipeline, delivered automatically. Know exactly who to hire before opening a single resume.",
+    span: "lg:col-span-8",
+    color: "bg-indigo-50 border-indigo-100",
+  },
+  {
+    icon: "🛡️",
+    label: "Remote Proctoring",
+    title: "Interview integrity guaranteed.",
+    desc: "Military-grade AI proctoring ensures the candidate you hire is exactly who took the remote interview.",
+    span: "lg:col-span-4",
+    color: "bg-emerald-50 border-emerald-100",
+  },
+  {
+    icon: "🏢",
+    label: "Enterprise Suite",
+    title: "Process thousands without adding headcount.",
+    desc: "Bulk resume screening and automated workflows built for enterprise scale and campus placement drives.",
+    span: "lg:col-span-4",
+    color: "bg-blue-50 border-blue-100",
+  },
+  {
+    icon: "⚡",
+    label: "Real-Time Dashboard",
+    title: "Zero-latency global recruiting.",
+    desc: "Live candidate video submissions, instant AI evaluation scores, and real-time hiring metrics — all in one place.",
+    span: "lg:col-span-8",
+    color: "bg-amber-50 border-amber-100",
+  },
+];
+---
+
+<section class="bg-surface py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-14 text-center">
+      <span class="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+        The Full Suite
+      </span>
+      <h2 class="text-4xl font-black tracking-tight text-on-surface sm:text-5xl">
+        Everything you need to <span class="text-primary">hire at scale.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 gap-5 lg:grid-cols-12">
+      {features.map(f => (
+        <div class={`group rounded-2xl border p-8 transition-all hover:-translate-y-1 hover:shadow-lg ${f.color} ${f.span}`}>
+          <div class="mb-4 text-3xl">{f.icon}</div>
+          <p class="mb-1 text-[10px] font-black uppercase tracking-widest text-on-surface-muted">{f.label}</p>
+          <h3 class="mb-3 text-xl font-black text-on-surface">{f.title}</h3>
+          <p class="text-sm font-medium leading-relaxed text-on-surface-muted">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,156 @@
+---
+const hrPlans = [
+  {
+    name: "Free Pilot",
+    price: "₹0",
+    highlight: false,
+    features: ["1 Active Job Post", "20 AI Interview Credits", "Basic Candidate Match Scoring", "Credits valid for 30 days"],
+    cta: "Start Free",
+    href: "/employer/signup",
+  },
+  {
+    name: "Growth Credits",
+    price: "₹4,999",
+    badge: "PAY ONCE, USE ANYTIME",
+    highlight: true,
+    features: ["50 AI Interview Credits", "Unlimited Active Jobs", "Advanced Anti-Cheating & Proctoring", "Detailed Placement Readiness Reports", "Credits Never Expire"],
+    cta: "Scale Your Hiring",
+    href: "/book-demo",
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    highlight: false,
+    features: ["500+ Interview Capacity per drive", "Flat fee per drive", "Custom Branding (White-labeling)", "Dedicated Account Manager & SLA"],
+    cta: "Contact Us",
+    href: "/contact",
+  },
+];
+
+const campusPlans = [
+  {
+    name: "Campus Starter",
+    price: "₹7,499",
+    detail: "per drive",
+    highlight: false,
+    features: ["1 Placement Drive (150 students)", "AI Video Interviews for all", "Automated scoring + ranking", "Results in 24 hours"],
+    cta: "Start Your First Drive",
+    href: "/contact",
+  },
+  {
+    name: "Campus Pro",
+    price: "₹14,999",
+    detail: "per semester",
+    badge: "MOST POPULAR FOR COLLEGES",
+    highlight: true,
+    features: ["Up to 3 Drives per semester", "Up to 400 students per drive", "Full AI video + skill assessment", "Placement readiness reports"],
+    cta: "Automate Your Semester",
+    href: "/contact",
+  },
+  {
+    name: "Campus Annual",
+    price: "₹29,999",
+    detail: "per year",
+    highlight: false,
+    features: ["Unlimited Drives", "Up to 2,000 students per year", "White-label portal with college branding", "API integration with college ERP"],
+    cta: "Partner With Us",
+    href: "/contact",
+  },
+];
+---
+
+<section id="pricing" class="bg-white py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <span class="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+        Simple, Transparent Pricing
+      </span>
+      <h2 class="text-4xl font-black tracking-tight text-on-surface sm:text-5xl">Scale Your Hiring Automation</h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg font-medium text-on-surface-muted">
+        Start automating your first round for free. No hidden fees, no lock-ins.
+      </p>
+    </div>
+
+    <!-- HR Plans -->
+    <h3 class="mb-8 text-center text-2xl font-black text-on-surface">For HR & Companies</h3>
+    <div class="mb-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+      {hrPlans.map(plan => (
+        <div class={`relative flex flex-col rounded-2xl p-8 transition-all hover:-translate-y-1 ${
+          plan.highlight
+            ? 'border-2 border-primary bg-primary/5 shadow-xl shadow-primary/10 md:-my-4 md:py-12'
+            : 'border border-border bg-white'
+        }`}>
+          {plan.badge && (
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="whitespace-nowrap rounded-full bg-primary px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
+                {plan.badge}
+              </span>
+            </div>
+          )}
+          <h4 class="mb-1 text-lg font-black text-on-surface">{plan.name}</h4>
+          <div class="mb-6">
+            <span class="text-3xl font-black text-on-surface">{plan.price}</span>
+          </div>
+          <ul class="mb-8 flex-1 space-y-3">
+            {plan.features.map(f => (
+              <li class="flex items-start gap-3 text-sm">
+                <svg class="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="font-medium text-on-surface-muted">{f}</span>
+              </li>
+            ))}
+          </ul>
+          <a href={plan.href} class={`block w-full rounded-xl py-3 text-center text-sm font-bold transition-all hover:-translate-y-0.5 ${
+            plan.highlight
+              ? 'bg-primary text-white shadow-md shadow-primary/30 hover:bg-primary-dark'
+              : 'border border-border bg-white text-on-surface hover:bg-surface-low'
+          }`}>{plan.cta} →</a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Campus Plans -->
+    <h3 class="mb-8 text-center text-2xl font-black text-on-surface">For Campus Colleges</h3>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {campusPlans.map(plan => (
+        <div class={`relative flex flex-col rounded-2xl p-8 transition-all hover:-translate-y-1 ${
+          plan.highlight
+            ? 'border-2 border-primary bg-primary/5 shadow-xl shadow-primary/10 md:-my-4 md:py-12'
+            : 'border border-border bg-white'
+        }`}>
+          {plan.badge && (
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="whitespace-nowrap rounded-full bg-primary px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
+                {plan.badge}
+              </span>
+            </div>
+          )}
+          <h4 class="mb-1 text-lg font-black text-on-surface">{plan.name}</h4>
+          <div class="mb-6">
+            <span class="text-3xl font-black text-on-surface">{plan.price}</span>
+            {plan.detail && <span class="ml-1 text-base font-bold text-on-surface-muted">{plan.detail}</span>}
+          </div>
+          <ul class="mb-8 flex-1 space-y-3">
+            {plan.features.map(f => (
+              <li class="flex items-start gap-3 text-sm">
+                <svg class="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="font-medium text-on-surface-muted">{f}</span>
+              </li>
+            ))}
+          </ul>
+          <a href={plan.href} class={`block w-full rounded-xl py-3 text-center text-sm font-bold transition-all hover:-translate-y-0.5 ${
+            plan.highlight
+              ? 'bg-primary text-white shadow-md shadow-primary/30 hover:bg-primary-dark'
+              : 'border border-border bg-white text-on-surface hover:bg-surface-low'
+          }`}>{plan.cta} →</a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

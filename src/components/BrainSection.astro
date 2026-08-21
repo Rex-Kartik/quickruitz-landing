@@ -1,0 +1,79 @@
+---
+const scores = [
+  { label: "Technical Depth", score: 8.7, pct: 87, good: true },
+  { label: "Problem Solving", score: 9.1, pct: 91, good: true },
+  { label: "Communication", score: 8.3, pct: 83, good: true },
+  { label: "Executive Presence", score: 6.3, pct: 63, good: false },
+  { label: "Relevance", score: 7.2, pct: 72, good: true },
+  { label: "Cultural Fit", score: 8.3, pct: 83, good: true },
+];
+
+const proctoring = [
+  "Session locked",
+  "Tab-switch detection",
+  "Anomaly flagging",
+  "Face verification",
+];
+---
+
+<section class="bg-white py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <span class="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+        QuickRuit Brain
+      </span>
+      <h2 class="text-4xl font-black tracking-tight text-on-surface sm:text-5xl">
+        Every step of hiring,
+        <span class="text-primary"> handled by AI.</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg font-medium text-on-surface-muted">
+        From the moment a job is posted to the final ranked shortlist — QuickRuit handles the screening, interviewing, scoring, and proctoring.
+      </p>
+    </div>
+
+    <!-- Bento grid -->
+    <div class="grid grid-cols-1 gap-5 lg:grid-cols-12">
+      <!-- AI Scores card (7 cols) -->
+      <div class="rounded-2xl border border-border bg-surface p-8 lg:col-span-7">
+        <p class="mb-1 text-[10px] font-black uppercase tracking-widest text-on-surface-muted">AI Evaluation Engine</p>
+        <h3 class="mb-6 text-2xl font-black text-on-surface">Unbiased AI candidate scoring & analysis.</h3>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {scores.map(s => (
+            <div>
+              <div class="mb-1 flex items-center justify-between">
+                <span class="text-xs font-bold text-on-surface">{s.label}</span>
+                <span class="text-xs font-black text-on-surface">{s.score}<span class="font-normal text-on-surface-muted">/10</span></span>
+              </div>
+              <div class="h-1.5 overflow-hidden rounded-full bg-border">
+                <div
+                  class={`h-full rounded-full ${s.good ? 'bg-primary' : 'bg-rose-400'}`}
+                  style={`width: ${s.pct}%`}
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Proctoring card (5 cols) -->
+      <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-8 lg:col-span-5">
+        <p class="mb-1 text-[10px] font-black uppercase tracking-widest text-emerald-600">AI Proctoring & Anti-Cheat</p>
+        <h3 class="mb-6 text-2xl font-black text-on-surface">Secure, verified candidate assessments.</h3>
+        <div class="space-y-3">
+          {proctoring.map(item => (
+            <div class="flex items-center gap-3 rounded-xl border border-emerald-100 bg-white px-4 py-3">
+              <div class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-emerald-100 bg-emerald-50">
+                <svg class="h-3.5 w-3.5 text-emerald-500" viewBox="0 0 14 14" fill="none">
+                  <path d="M2.5 7l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="flex-1 text-sm font-bold text-on-surface">{item}</span>
+              <span class="h-2 w-2 animate-pulse rounded-full bg-emerald-400"></span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

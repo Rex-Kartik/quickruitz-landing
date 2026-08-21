@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import Hero from '../components/Hero.astro';
+import LogoCloud from '../components/LogoCloud.astro';
+import ProductIsland from '../components/ProductIsland';
+import ComparisonSlider from '../components/ComparisonSlider';
+import BrainSection from '../components/BrainSection.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import Pricing from '../components/Pricing.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout>
+  <NavBar />
+  <main>
+    <Hero />
+    <LogoCloud />
+    <ProductIsland client:visible />
+    <ComparisonSlider client:visible />
+    <BrainSection />
+    <BentoGrid />
+    <Pricing />
+    <FinalCTA />
+  </main>
+  <Footer />
+</Layout>

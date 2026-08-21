@@ -1,0 +1,42 @@
+---
+// APP_URL: where the React SPA lives.
+// Local dev → http://localhost:5173
+// Production → https://app.quickruit.in (or your deployed domain)
+const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'http://localhost:5173';
+---
+<header class="sticky top-0 z-50 w-full border-b border-border bg-white/80 backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2.5">
+      <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+        <span class="text-sm font-black text-white">Q</span>
+      </div>
+      <span class="text-xl font-black tracking-tight text-on-surface">QuickRuit</span>
+      <span class="ml-1 hidden rounded bg-slate-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-400 sm:inline">BETA</span>
+    </a>
+
+    <!-- Nav links (desktop) -->
+    <nav class="hidden items-center gap-8 md:flex">
+      <a href="#features" class="text-sm font-semibold text-on-surface-muted transition-colors hover:text-on-surface">Product</a>
+      <a href="#solutions" class="text-sm font-semibold text-on-surface-muted transition-colors hover:text-on-surface">Solutions</a>
+      <a href="#pricing" class="text-sm font-semibold text-on-surface-muted transition-colors hover:text-on-surface">Pricing</a>
+      <a href={`${APP_URL}/blogs`} class="text-sm font-semibold text-on-surface-muted transition-colors hover:text-on-surface">Blog</a>
+    </nav>
+
+    <!-- CTAs -->
+    <div class="flex items-center gap-3">
+      <a
+        href={`${APP_URL}/employer/login`}
+        class="hidden text-sm font-semibold text-on-surface-muted transition-colors hover:text-on-surface md:block"
+      >
+        Login
+      </a>
+      <a
+        href={`${APP_URL}/book-demo`}
+        class="rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20"
+      >
+        Book Demo
+      </a>
+    </div>
+  </div>
+</header>

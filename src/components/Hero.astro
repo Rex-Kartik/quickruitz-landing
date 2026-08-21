@@ -1,0 +1,130 @@
+---
+const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'http://localhost:5173';
+---
+<section class="relative overflow-hidden bg-white pt-24 pb-20">
+  <!-- Background gradient orbs -->
+  <div class="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/5 blur-3xl"></div>
+
+  <div class="relative mx-auto max-w-5xl px-6 text-center">
+    <!-- Eyebrow badge -->
+    <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5">
+      <span class="h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+      <span class="text-xs font-bold uppercase tracking-widest text-primary">AI-Powered Recruitment</span>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="mb-6 text-5xl font-black leading-[1.1] tracking-tight text-on-surface sm:text-6xl lg:text-7xl">
+      One platform to automate
+      <br />
+      <span class="text-primary">all your hiring.</span>
+    </h1>
+
+    <!-- Subheading -->
+    <p class="mx-auto mb-10 max-w-2xl text-lg font-medium leading-relaxed text-on-surface-muted sm:text-xl">
+      Screen 1000+ candidates automatically. Let AI conduct async video interviews,
+      verify coding skills, and deliver a ranked shortlist — in hours, not weeks.
+    </p>
+
+    <!-- Email CTA — submits to React app signup -->
+    <form class="mx-auto mb-4 flex max-w-md flex-col gap-3 sm:flex-row" action={`${APP_URL}/employer/signup`} method="GET">
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter work email"
+        class="flex-1 rounded-lg border border-border bg-white px-4 py-3.5 text-sm text-on-surface shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+      />
+      <button
+        type="submit"
+        class="whitespace-nowrap rounded-lg bg-primary px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/30 active:scale-[0.98]"
+      >
+        Get Started Free
+      </button>
+    </form>
+    <p class="mb-16 text-xs font-medium text-on-surface-muted">Free Pilot includes 20 credits. No credit card required.</p>
+
+    <!-- Product visual -->
+    <div class="relative mx-auto max-w-5xl overflow-hidden rounded-2xl border border-border bg-on-surface shadow-2xl shadow-on-surface/10">
+      <!-- Mock browser chrome -->
+      <div class="flex items-center gap-1.5 border-b border-white/10 bg-[#1e293b] px-4 py-3">
+        <div class="h-3 w-3 rounded-full bg-[#ef4444]"></div>
+        <div class="h-3 w-3 rounded-full bg-[#f59e0b]"></div>
+        <div class="h-3 w-3 rounded-full bg-[#22c55e]"></div>
+        <div class="ml-4 flex-1 rounded bg-white/10 px-3 py-1 text-xs text-white/50">app.quickruit.in/employer/dashboard</div>
+      </div>
+      <!-- Dashboard mockup -->
+      <div class="grid grid-cols-4 bg-[#0f172a] p-4 gap-3 min-h-[360px]">
+        <!-- Sidebar -->
+        <div class="col-span-1 flex flex-col gap-3">
+          <div class="rounded-lg bg-white/5 p-3">
+            <div class="mb-2 text-[10px] font-bold uppercase tracking-widest text-white/40">Active Jobs</div>
+            {["Frontend Eng", "Product Designer", "Data Analyst"].map(j => (
+              <div class="mb-1.5 flex items-center justify-between rounded bg-white/5 px-2 py-1.5">
+                <span class="text-[11px] font-medium text-white/70">{j}</span>
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+              </div>
+            ))}
+          </div>
+          <div class="rounded-lg bg-white/5 p-3">
+            <div class="mb-2 text-[10px] font-bold uppercase tracking-widest text-white/40">Stats</div>
+            <div class="space-y-2">
+              {[["Applications","842"],["Screened","234"],["Shortlisted","18"]].map(([label,val]) => (
+                <div class="flex justify-between">
+                  <span class="text-[10px] text-white/50">{label}</span>
+                  <span class="text-[10px] font-bold text-white">{val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <!-- Main content -->
+        <div class="col-span-3 flex flex-col gap-3">
+          <div class="rounded-lg bg-white/5 p-3">
+            <div class="mb-3 text-xs font-bold text-white">Top Shortlisted — Frontend Engineer</div>
+            <div class="space-y-2">
+              {[
+                {name:"Priya Sharma",score:"9.2",tag:"Top Match",color:"bg-emerald-500"},
+                {name:"Rahul Gupta",score:"8.7",tag:"Strong",color:"bg-blue-500"},
+                {name:"Anita Patel",score:"8.1",tag:"Good",color:"bg-indigo-500"},
+              ].map(c => (
+                <div class="flex items-center gap-3 rounded-lg bg-white/5 p-2.5">
+                  <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 text-[11px] font-bold text-white">{c.name[0]}</div>
+                  <div class="flex-1">
+                    <div class="text-[12px] font-semibold text-white">{c.name}</div>
+                    <div class="text-[10px] text-white/50">AI Interview Completed</div>
+                  </div>
+                  <div class={`rounded px-2 py-0.5 text-[10px] font-bold text-white ${c.color}`}>{c.tag}</div>
+                  <div class="text-sm font-black text-white">{c.score}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="rounded-lg bg-white/5 p-3">
+              <div class="mb-2 text-[10px] font-bold text-white/60">AI Evaluation Scores</div>
+              {[["Technical",87],["Communication",91],["Culture Fit",78]].map(([l,v]) => (
+                <div class="mb-2">
+                  <div class="mb-1 flex justify-between text-[10px]">
+                    <span class="text-white/50">{l}</span>
+                    <span class="font-bold text-white">{v}%</span>
+                  </div>
+                  <div class="h-1 overflow-hidden rounded-full bg-white/10">
+                    <div class="h-full rounded-full bg-primary" style={`width:${v}%`}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="rounded-lg bg-emerald-500/10 border border-emerald-500/20 p-3">
+              <div class="mb-2 text-[10px] font-bold text-emerald-400">Proctoring Active</div>
+              {["Session locked","Tab-switch: 0 flags","Face verified"].map(s => (
+                <div class="mb-1.5 flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                  <span class="text-[10px] text-white/70">{s}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
