@@ -28,3 +28,36 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# ── Local AI agent & IDE tool files (DO NOT PUSH) ────────────────────────────
+# Antigravity / Gemini
+.agents/
+.gemini/
+mcp.json
+.mcp.json
+GEMINI.md
+AGENTS.md
+
+# Code-review-graph MCP
+.code-review-graph/
+
+# Claude / Anthropic
+.claude/
+CLAUDE.md
+
+# Cursor
+.cursor/
+.cursorrules
+
+# Kiro
+.kiro/
+
+# Qoder / Windsurf
+.qoder/
+QODER.md
+.opencode.json
+.windsurfrules
+
+# Local setup guides (not project code)
+FOUNDER_SETUP_GUIDE.md
+DESIGN.md

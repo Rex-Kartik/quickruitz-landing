@@ -1,0 +1,35 @@
+---
+const companies = [
+  'TechCorp India', 'HireZen', 'Startup Hub', 'GlobalRecruits',
+  'CampusConnect', 'TalentForge', 'ScaleTeam', 'NextHire',
+  'TechCorp India', 'HireZen', 'Startup Hub', 'GlobalRecruits',
+  'CampusConnect', 'TalentForge', 'ScaleTeam', 'NextHire',
+];
+---
+
+<section class="border-y border-border bg-surface py-5 overflow-hidden">
+  <div class="mx-auto max-w-7xl px-6 mb-4">
+    <p class="text-center text-[10px] font-bold uppercase tracking-[0.12em] text-on-surface-muted">
+      Trusted by HR teams, Startups & Campus Placement Cells across India
+    </p>
+  </div>
+
+  <!-- Scrolling marquee -->
+  <div class="relative flex overflow-hidden">
+    <!-- Left fade -->
+    <div class="pointer-events-none absolute left-0 top-0 h-full w-24 z-10" style="background: linear-gradient(90deg, rgb(247,249,251) 0%, transparent 100%)"></div>
+    <!-- Right fade -->
+    <div class="pointer-events-none absolute right-0 top-0 h-full w-24 z-10" style="background: linear-gradient(270deg, rgb(247,249,251) 0%, transparent 100%)"></div>
+
+    <div class="flex animate-marquee gap-10 whitespace-nowrap">
+      {companies.map((name, i) => (
+        <div class="flex items-center gap-2 opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all">
+          <div class="h-6 w-6 rounded-md bg-on-surface/15 flex items-center justify-center text-[9px] font-black text-on-surface/60">
+            {name[0]}
+          </div>
+          <span class="text-sm font-semibold text-on-surface">{name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

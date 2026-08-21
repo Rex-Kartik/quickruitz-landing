@@ -1,0 +1,59 @@
+---
+const stats = [
+  { number: '70%', label: 'Time saved', sub: 'reduction in time-to-shortlist vs traditional screening' },
+  { number: '3×', label: 'Faster hiring', sub: 'first-round to ranked shortlist vs traditional process' },
+  { number: '10K+', label: 'Assessments run', sub: 'across corporate and campus drives on QuickRuit' },
+  { number: '92%', label: 'Recruiter satisfaction', sub: 'from teams who replaced manual screening with QuickRuit' },
+];
+
+const badges = [
+  { label: 'AI Ethics Commitment', icon: '🤝' },
+  { label: 'Secure Assessments', icon: '🔒' },
+  { label: 'Bias-Aware Evaluation', icon: '⚖️' },
+  { label: 'Data Privacy First', icon: '🛡️' },
+];
+---
+
+<section class="bg-white py-24">
+  <div class="mx-auto max-w-7xl px-6">
+
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <span class="mb-4 inline-block rounded-pill border border-border bg-surface px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-on-surface-muted">
+        Results
+      </span>
+      <h2 class="text-[40px] sm:text-[48px] font-black leading-[1.1] tracking-tight text-on-surface">
+        Numbers that move the needle.
+      </h2>
+      <p class="mx-auto mt-5 max-w-lg text-lg font-medium text-on-surface-muted">
+        Real outcomes from teams that replaced manual screening with structured, evidence-based evaluation.
+      </p>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="mb-16 grid grid-cols-2 gap-5 lg:grid-cols-4">
+      {stats.map(s => (
+        <div class="group rounded-2xl border border-border bg-surface p-8 text-center transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-card hover:bg-surface-blue">
+          <div class="mb-2 text-[52px] font-black leading-none tracking-tight text-primary">{s.number}</div>
+          <div class="mb-2 text-sm font-black text-on-surface">{s.label}</div>
+          <p class="text-xs font-medium leading-relaxed text-on-surface-muted">{s.sub}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Trust / compliance badges -->
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      {badges.map(b => (
+        <div class="flex items-center gap-2.5 rounded-pill border border-border bg-surface px-5 py-2.5">
+          <span class="text-base">{b.icon}</span>
+          <span class="text-sm font-semibold text-on-surface-muted">{b.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Footnote -->
+    <p class="mt-6 text-center text-xs font-medium text-on-surface-muted/60">
+      *Figures based on internal pilot data and recruiter feedback. Individual results may vary.
+    </p>
+  </div>
+</section>

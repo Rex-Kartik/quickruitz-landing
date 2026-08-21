@@ -1,0 +1,85 @@
+---
+const capabilities = [
+  { icon: '📋', label: 'Bulk Resume Screening', desc: 'Upload thousands of resumes. AI matches against JD instantly.' },
+  { icon: '🎯', label: 'Role Calibration', desc: 'Question banks calibrated per role and domain.' },
+  { icon: '⚡', label: 'Adaptive Difficulty', desc: 'Real-time difficulty adjustment based on performance.' },
+  { icon: '🎥', label: 'AI Video Interview', desc: 'Async interviews with AI-generated follow-up questions.' },
+  { icon: '💻', label: 'Coding Sandbox', desc: 'Browser-based IDE with multi-language support.' },
+  { icon: '🧠', label: 'Candidate Intelligence', desc: 'Scorecards, evidence, and rankings for every candidate.' },
+  { icon: '🛡️', label: 'AI Proctoring', desc: 'Tab-switch detection, face verification, session lock.' },
+  { icon: '📊', label: 'Recruiter Dashboard', desc: 'Live pipeline view with real-time assessment updates.' },
+  { icon: '🎓', label: 'Campus Model', desc: 'Placement drives for universities with student tracking.' },
+  { icon: '🔗', label: 'ATS Integrations', desc: 'Connect to your existing hiring workflow.' },
+  { icon: '📈', label: 'Performance Analytics', desc: 'Assessment quality, completion rates, and score insights.' },
+  { icon: '🏆', label: 'Auto-Shortlisting', desc: 'Ranked leaderboard delivered before you open a resume.' },
+];
+
+const featured = [
+  {
+    label: 'Adaptive Assessment Engine',
+    desc: 'The only assessment that adapts to each candidate in real-time — revealing their true performance ceiling, not just their preparation level.',
+    color: 'bg-amber-50 border-amber-200',
+    labelColor: 'text-amber-600',
+    icon: '⚡',
+    span: 'lg:col-span-5',
+  },
+  {
+    label: 'Candidate Intelligence Layer',
+    desc: 'Every signal — aptitude, coding, interview, adaptive difficulty — fused into explainable scorecards with AI evidence statements.',
+    color: 'bg-primary-light border-border-blue',
+    labelColor: 'text-primary',
+    icon: '🧠',
+    span: 'lg:col-span-4',
+  },
+  {
+    label: 'Campus & University Model',
+    desc: 'Built for placement drives. Evaluate hundreds of students at once, generate role-specific readiness reports, and track cohort performance over time.',
+    color: 'bg-emerald-50 border-emerald-200',
+    labelColor: 'text-emerald-600',
+    icon: '🎓',
+    span: 'lg:col-span-3',
+  },
+];
+---
+
+<section class="bg-white py-24">
+  <div class="mx-auto max-w-7xl px-6">
+
+    <!-- Header -->
+    <div class="mb-14 text-center">
+      <span class="mb-4 inline-block rounded-pill border border-border bg-surface px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-on-surface-muted">
+        Platform Capabilities
+      </span>
+      <h2 class="text-[40px] sm:text-[48px] font-black leading-[1.1] tracking-tight text-on-surface">
+        Everything your hiring team needs.
+        <br />
+        <span class="text-primary">In one platform.</span>
+      </h2>
+      <p class="mx-auto mt-5 max-w-xl text-lg font-medium text-on-surface-muted">
+        Stop stitching together 5 different tools. QuickRuit covers the full assessment-to-decision pipeline.
+      </p>
+    </div>
+
+    <!-- Dense capability tiles -->
+    <div class="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+      {capabilities.map(c => (
+        <div class="group rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-card hover:bg-surface-blue">
+          <div class="mb-3 text-2xl">{c.icon}</div>
+          <p class="mb-1 text-sm font-black text-on-surface group-hover:text-primary transition-colors">{c.label}</p>
+          <p class="text-xs font-medium leading-relaxed text-on-surface-muted">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Featured tiles (larger) -->
+    <div class="grid grid-cols-1 gap-5 lg:grid-cols-12">
+      {featured.map(f => (
+        <div class={`group rounded-2xl border p-8 transition-all hover:-translate-y-1 hover:shadow-card ${f.color} ${f.span}`}>
+          <div class="mb-4 text-3xl">{f.icon}</div>
+          <p class={`mb-2 text-[10px] font-black uppercase tracking-widest ${f.labelColor}`}>{f.label}</p>
+          <p class="text-base font-medium leading-relaxed text-on-surface-muted">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
