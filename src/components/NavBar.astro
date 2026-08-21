@@ -1,106 +1,307 @@
 ---
 const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'http://localhost:5173';
 
-const productLinks = [
-  { label: 'Aptitude Assessment', desc: 'Role-specific aptitude tests', href: '#features' },
-  { label: 'Adaptive Technical', desc: 'Difficulty adapts to performance', href: '#features' },
-  { label: 'AI Video Interview', desc: 'Async AI-evaluated interviews', href: '#features' },
-  { label: 'Coding Assessment', desc: 'Browser IDE + DSA evaluation', href: '#features' },
-  { label: 'Candidate Intelligence', desc: 'Scorecards, evidence and ranking', href: '#intelligence' },
-  { label: 'Bulk Screening', desc: 'Resume match and outreach at scale', href: '#features' },
-];
-
-const navigation = [
-  { label: 'Why QuickRuit?', href: '#solutions' },
-  { label: 'How it Works', href: '#how-it-works' },
-  { label: 'Pricing', href: '#pricing' },
+const navItems = [
+  {
+    label: 'Why QuickRuit?',
+    id: 'platform',
+    width: 'w-[840px]',
+    columns: [
+      {
+        title: 'Assess & Screen',
+        items: [
+          { label: 'Aptitude Assessment', desc: 'Role-specific aptitude testing', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2', href: '#features' },
+          { label: 'Coding Assessment', desc: 'Browser IDE + DSA evaluation', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4', href: '#features' },
+          { label: 'Bulk Screening', desc: 'Process 10,000+ candidates instantly', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z', href: '#features' },
+        ]
+      },
+      {
+        title: 'Interview & Decide',
+        items: [
+          { label: 'AI Video Interview', desc: 'Async AI-evaluated interviews', icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z', href: '#features' },
+          { label: 'Adaptive Technical', desc: 'Dynamic difficulty scaling', icon: 'M13 10V3L4 14h7v7l9-11h-7z', href: '#features' },
+          { label: 'Candidate Intelligence', desc: 'Evidence-based scorecards', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z', href: '#intelligence' },
+        ]
+      }
+    ],
+    promo: {
+      title: 'The End of Resumes',
+      desc: 'See how QuickRuit Intelligence replaces keywords with actual evidence of skill.',
+      linkText: 'Explore Intelligence →',
+      linkHref: '#intelligence',
+      bgClass: 'bg-gradient-to-br from-primary to-primary-dark'
+    }
+  },
+  {
+    label: 'Solutions',
+    id: 'solutions',
+    width: 'w-[720px]',
+    columns: [
+      {
+        title: 'By Use Case',
+        items: [
+          { label: 'Corporate HR', desc: 'Hire faster without growing your HR team', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', href: '#solutions' },
+          { label: 'Campus Placement', desc: 'Run placement drives that scale securely', icon: 'M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z', href: '#solutions' },
+          { label: 'Staffing Agencies', desc: 'Deliver pre-verified candidates to clients', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z', href: '#solutions' },
+        ]
+      }
+    ],
+    promo: {
+      title: 'Automate Tech Hiring',
+      desc: 'Discover how top startups reduce their engineering interview time by 70%.',
+      linkText: 'Read Case Study →',
+      linkHref: '#',
+      bgClass: 'bg-navy'
+    }
+  },
+  {
+    label: 'Resources',
+    id: 'resources',
+    width: 'w-[400px]',
+    columns: [
+      {
+        title: 'Learn',
+        items: [
+          { label: 'Blog', desc: 'Latest insights and hiring trends', icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2', href: `${APP_URL}/blogs` },
+          { label: 'Documentation', desc: 'Guides and API references', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z', href: '#' },
+          { label: 'Case Studies', desc: 'Success stories from our customers', icon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z', href: '#' },
+        ]
+      }
+    ],
+    promo: null
+  },
+  {
+    label: 'Our Company',
+    id: 'company',
+    width: 'w-[320px]',
+    columns: [
+      {
+        title: 'About Us',
+        items: [
+          { label: 'About Us', desc: 'Our mission to fix hiring', icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z', href: '#' },
+          { label: 'Pricing', desc: 'Transparent plans for every team', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', href: '#pricing' },
+          { label: 'Contact Us', desc: 'Get in touch with our team', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', href: '#' },
+        ]
+      }
+    ],
+    promo: null
+  }
 ];
 ---
 
-<header id="main-nav" class="sticky top-0 z-50 w-full border-b border-transparent bg-white/95 backdrop-blur-xl transition-all duration-300">
-  <div class="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
-    <a href="/" class="group flex shrink-0 items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label="QuickRuit home">
-      <img src="/assets/quickruit-logo.png" width="36" height="36" alt="" class="h-8 w-8 rounded-[10px] object-cover shadow-[0_8px_18px_rgba(0,82,255,0.22)] transition-transform duration-200 group-hover:-rotate-3 group-hover:scale-105" />
-      <span class="text-[19px] font-black tracking-[-0.04em] text-on-surface">QuickRuit</span>
-      <span class="hidden rounded-md border border-primary/15 bg-primary/8 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.16em] text-primary sm:inline">Beta</span>
-    </a>
+<header id="main-nav" class="sticky top-0 z-50 w-full border-b border-border/40 bg-white/95 backdrop-blur-xl transition-all duration-300">
+  <!-- Top Support Banner (Kept thin and subtle) -->
+  <div id="top-banner" class="bg-primary px-5 py-1.5 text-center transition-all duration-300 sm:px-6 lg:px-8">
+    <p class="text-[13px] font-medium text-white/90">
+      <span class="font-bold text-white">Candidates:</span> Are you interviewing and <a href="#" class="font-bold text-white underline hover:text-white/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm">need support?</a>
+    </p>
+  </div>
 
-    <nav class="hidden items-center gap-0.5 lg:flex" aria-label="Primary navigation">
-      <div class="relative" id="product-menu-wrap">
-        <button id="product-menu-button" type="button" aria-expanded="false" aria-controls="product-menu" class="inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-sm font-semibold text-on-surface-muted transition-colors hover:bg-surface hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-          Features
-          <svg id="product-chevron" class="h-3.5 w-3.5 transition-transform duration-200" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div id="product-menu" class="invisible absolute left-1/2 top-full w-[500px] -translate-x-1/2 translate-y-1 opacity-0 pt-3 transition-all duration-200" aria-hidden="true">
-          <div class="rounded-2xl border border-border bg-white p-5 shadow-[0_22px_60px_rgba(15,31,58,0.14)]">
-            <div class="mb-4 flex items-end justify-between gap-4">
-              <div><p class="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">QuickRuit platform</p><p class="mt-1 text-sm text-on-surface-muted">A complete first-round hiring workflow.</p></div>
-              <span class="rounded-full bg-primary/8 px-2.5 py-1 text-[10px] font-bold text-primary">6 modules</span>
-            </div>
-            <div class="grid grid-cols-2 gap-1.5">
-              {productLinks.map((link) => (
-                <a href={link.href} class="group/item flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-surface-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                  <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary/8 text-primary"><span class="h-1.5 w-1.5 rounded-full bg-current transition-transform group-hover/item:scale-150"></span></span>
-                  <span><span class="block text-sm font-semibold text-on-surface transition-colors group-hover/item:text-primary">{link.label}</span><span class="mt-0.5 block text-xs leading-5 text-on-surface-muted">{link.desc}</span></span>
-                </a>
-              ))}
+  <div class="mx-auto flex h-[88px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
+    
+    <!-- Logo (Left) -->
+    <div class="flex w-[260px] shrink-0 items-center justify-start">
+      <a href="/" class="group flex shrink-0 items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label="QuickRuit home">
+        <img src="/assets/quickruit-logo.png" width="40" height="40" alt="" class="h-10 w-10 rounded-[11px] object-cover shadow-[0_4px_12px_rgba(0,82,255,0.15)] transition-transform duration-200 group-hover:-rotate-3 group-hover:scale-105" />
+        <span class="text-[24px] font-black tracking-[-0.04em] text-on-surface">QuickRuit</span>
+      </a>
+    </div>
+
+    <!-- Centered Nav Links -->
+    <nav class="hidden lg:flex flex-auto justify-center gap-4 xl:gap-8" aria-label="Primary navigation">
+      {navItems.map((nav) => (
+        <div class="relative nav-dropdown-wrap flex items-center h-full" data-menu={nav.id}>
+          <button type="button" aria-expanded="false" aria-controls={`menu-${nav.id}`} class="nav-dropdown-btn group inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-[15px] font-semibold text-on-surface-muted transition-colors hover:bg-surface hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary aria-expanded:text-primary">
+            {nav.label}
+            <svg class="nav-chevron h-3.5 w-3.5 text-on-surface-muted/50 transition-transform duration-200 group-hover:text-on-surface-muted group-aria-expanded:text-primary" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          
+          <div id={`menu-${nav.id}`} class="nav-menu invisible absolute left-1/2 top-[76px] -translate-x-1/2 translate-y-3 opacity-0 transition-all duration-200 ease-out" aria-hidden="true">
+            <!-- Invisible hit area to prevent hover gaps -->
+            <div class="absolute -top-6 left-0 right-0 h-6 bg-transparent"></div>
+            
+            <div class={`rounded-2xl border border-border bg-white p-2 shadow-[0_32px_80px_rgba(15,31,58,0.1)] overflow-hidden ${nav.width}`}>
+              <div class="flex">
+                <!-- Links Area -->
+                <div class={`grid gap-6 p-6 flex-1 ${nav.columns.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                  {nav.columns.map((col) => (
+                    <div>
+                      <h3 class="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-primary">{col.title}</h3>
+                      <ul class="flex flex-col gap-2">
+                        {col.items.map((link) => (
+                          <li>
+                            <a href={link.href} class="group/item flex items-start gap-4 rounded-xl p-3 transition-colors hover:bg-surface-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface text-primary transition-colors group-hover/item:bg-primary group-hover/item:text-white">
+                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d={link.icon} />
+                                </svg>
+                              </div>
+                              <div>
+                                <span class="block text-[15px] font-bold text-on-surface transition-colors group-hover/item:text-primary">{link.label}</span>
+                                <span class="mt-0.5 block text-[13.5px] leading-snug text-on-surface-muted">{link.desc}</span>
+                              </div>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+                
+                <!-- Promo Area (if exists) -->
+                {nav.promo && (
+                  <div class={`w-[320px] p-6 text-white ${nav.promo.bgClass} flex flex-col justify-end relative overflow-hidden rounded-xl`}>
+                    <!-- Subtle background pattern -->
+                    <div class="absolute inset-0 opacity-[0.05]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
+                    <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-[30px]"></div>
+                    
+                    <div class="relative z-10">
+                      <div class="mb-4 inline-block rounded-md bg-white/20 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-sm">Featured</div>
+                      <h4 class="text-xl font-bold leading-tight">{nav.promo.title}</h4>
+                      <p class="mt-2 text-sm font-medium text-white/80">{nav.promo.desc}</p>
+                      <a href={nav.promo.linkHref} class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-white hover:text-white/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm">
+                        {nav.promo.linkText}
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {navigation.map((item) => <a href={item.href} class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-on-surface-muted transition-colors hover:bg-surface hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{item.label}</a>)}
+      ))}
     </nav>
 
-    <div class="hidden items-center gap-4 lg:flex">
-      <a href={`${APP_URL}/employer/login`} class="rounded-lg px-2 py-2 text-sm font-semibold text-on-surface-muted transition-colors hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Login</a>
-      <a href={`${APP_URL}/book-demo`} class="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-[0_10px_24px_rgba(0,82,255,0.18)] transition-all hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-card-blue active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Request Demo <span aria-hidden="true">→</span></a>
+    <!-- Right Actions -->
+    <div class="hidden w-[260px] items-center justify-end gap-5 lg:flex">
+      <!-- Log In Text Link -->
+      <a href={`${APP_URL}/employer/login`} class="text-[15px] font-semibold text-on-surface hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">Log In</a>
+      
+      <!-- Divider -->
+      <div class="h-5 w-[1.5px] bg-border"></div>
+      
+      <!-- Request Demo Solid Pill -->
+      <a href={`${APP_URL}/book-demo`} class="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-[15px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-md active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Request Demo</a>
     </div>
 
+    <!-- Mobile Menu Button -->
     <button id="mobile-menu-btn" type="button" class="flex h-10 w-10 items-center justify-center rounded-xl text-on-surface transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-      <svg id="icon-open" class="h-5 w-5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <svg id="icon-close" class="hidden h-5 w-5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg id="icon-close" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </div>
 
-  <div id="mobile-menu" class="hidden border-t border-border bg-white px-5 pb-6 pt-4 lg:hidden" aria-hidden="true">
-    <nav class="flex flex-col gap-1" aria-label="Mobile navigation">
-      <p class="mb-1 mt-1 px-3 text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Features</p>
-      {productLinks.map((link) => <a href={link.href} class="rounded-xl px-3 py-2.5 text-sm font-semibold text-on-surface transition-colors hover:bg-surface-blue">{link.label}</a>)}
-      <div class="my-2 h-px bg-border"></div>
-      {navigation.map((item) => <a href={item.href} class="rounded-xl px-3 py-2.5 text-sm font-semibold text-on-surface transition-colors hover:bg-surface">{item.label}</a>)}
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden border-t border-border bg-white px-5 pb-8 pt-4 lg:hidden" aria-hidden="true">
+    <nav class="flex flex-col gap-3" aria-label="Mobile navigation">
+      {navItems.map((nav) => (
+        <div class="py-1">
+          <p class="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.15em] text-primary">{nav.label}</p>
+          <div class="flex flex-col gap-1">
+            {nav.columns.flatMap(col => col.items).map((link) => (
+              <a href={link.href} class="flex items-center gap-3 rounded-xl px-3 py-2 text-[15px] font-bold text-on-surface transition-colors hover:bg-surface-blue hover:text-primary">
+                <svg class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={link.icon} /></svg>
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
     </nav>
-    <div class="mt-5 grid grid-cols-2 gap-3">
-      <a href={`${APP_URL}/employer/login`} class="rounded-full border border-border py-3 text-center text-sm font-bold text-on-surface transition-colors hover:bg-surface">Login</a>
-      <a href={`${APP_URL}/book-demo`} class="rounded-full bg-primary py-3 text-center text-sm font-bold text-white transition-colors hover:bg-primary-dark">Request Demo</a>
+    <div class="mt-8 flex flex-col gap-3">
+      <a href={`${APP_URL}/employer/login`} class="rounded-xl border border-border py-3.5 text-center text-[15px] font-bold text-on-surface transition-colors hover:bg-surface">Log In</a>
+      <a href={`${APP_URL}/book-demo`} class="rounded-xl bg-primary py-3.5 text-center text-[15px] font-bold text-white transition-colors hover:bg-primary-dark">Request Demo</a>
     </div>
   </div>
 </header>
 
 <script>
   const nav = document.getElementById('main-nav');
-  const productButton = document.getElementById('product-menu-button');
-  const productMenu = document.getElementById('product-menu');
-  const productChevron = document.getElementById('product-chevron');
+  const dropdownWraps = document.querySelectorAll('.nav-dropdown-wrap');
   const mobileButton = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('icon-open');
   const iconClose = document.getElementById('icon-close');
 
-  const setProductMenu = (open: boolean) => {
-    productButton?.setAttribute('aria-expanded', String(open));
-    productMenu?.setAttribute('aria-hidden', String(!open));
-    productMenu?.classList.toggle('invisible', !open);
-    productMenu?.classList.toggle('opacity-0', !open);
-    productMenu?.classList.toggle('translate-y-1', !open);
-    productMenu?.classList.toggle('opacity-100', open);
-    productMenu?.classList.toggle('translate-y-0', open);
-    productChevron?.classList.toggle('rotate-180', open);
+  let activeMenu: string | null = null;
+  let hoverTimeout: number | null = null;
+
+  const closeAllMenus = () => {
+    dropdownWraps.forEach(wrap => {
+      const btn = wrap.querySelector('.nav-dropdown-btn');
+      const menu = wrap.querySelector('.nav-menu');
+      
+      btn?.setAttribute('aria-expanded', 'false');
+      menu?.setAttribute('aria-hidden', 'true');
+      menu?.classList.add('invisible', 'opacity-0', 'translate-y-3');
+      menu?.classList.remove('opacity-100', 'translate-y-0');
+    });
+    activeMenu = null;
   };
 
-  productButton?.addEventListener('click', () => setProductMenu(productButton.getAttribute('aria-expanded') !== 'true'));
-  document.addEventListener('click', (event) => { if (!productButton?.parentElement?.contains(event.target as Node)) setProductMenu(false); });
-  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') { setProductMenu(false); productButton?.focus(); } });
+  const openMenu = (wrap: Element) => {
+    const id = wrap.getAttribute('data-menu');
+    if (activeMenu === id) return;
+    
+    closeAllMenus();
+    activeMenu = id;
+    
+    const btn = wrap.querySelector('.nav-dropdown-btn');
+    const menu = wrap.querySelector('.nav-menu');
+    
+    btn?.setAttribute('aria-expanded', 'true');
+    menu?.setAttribute('aria-hidden', 'false');
+    menu?.classList.remove('invisible', 'opacity-0', 'translate-y-3');
+    menu?.classList.add('opacity-100', 'translate-y-0');
+  };
 
+  // Hover logic for desktop
+  if (window.matchMedia('(min-width: 1024px)').matches) {
+    dropdownWraps.forEach(wrap => {
+      wrap.addEventListener('mouseenter', () => {
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+        openMenu(wrap);
+      });
+      
+      wrap.addEventListener('mouseleave', () => {
+        hoverTimeout = window.setTimeout(() => {
+          closeAllMenus();
+        }, 150); // slight delay before closing
+      });
+    });
+  } else {
+    // Click logic for smaller screens (if they somehow get desktop nav)
+    dropdownWraps.forEach(wrap => {
+      const btn = wrap.querySelector('.nav-dropdown-btn');
+      btn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = wrap.getAttribute('data-menu');
+        if (activeMenu === id) {
+          closeAllMenus();
+        } else {
+          openMenu(wrap);
+        }
+      });
+    });
+  }
+
+  // Close on outside click
+  document.addEventListener('click', (event) => {
+    const target = event.target as Node;
+    const isInsideMenu = Array.from(dropdownWraps).some(wrap => wrap.contains(target));
+    if (!isInsideMenu) {
+      closeAllMenus();
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeAllMenus();
+    }
+  });
+
+  // Mobile menu toggle
   mobileButton?.addEventListener('click', () => {
     const open = mobileButton.getAttribute('aria-expanded') !== 'true';
     mobileButton.setAttribute('aria-expanded', String(open));
@@ -111,6 +312,7 @@ const navigation = [
     iconClose?.classList.toggle('hidden', !open);
   });
 
+  // Close mobile menu on link click
   mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
     mobileButton?.setAttribute('aria-expanded', 'false');
     mobileMenu.classList.add('hidden');
@@ -119,8 +321,10 @@ const navigation = [
     iconClose?.classList.add('hidden');
   }));
 
+  // Sticky border effect
   window.addEventListener('scroll', () => {
     const elevated = window.scrollY > 10;
+    nav?.classList.toggle('border-border/40', !elevated);
     nav?.classList.toggle('border-border', elevated);
     nav?.classList.toggle('shadow-[0_4px_24px_rgba(15,31,58,0.06)]', elevated);
   }, { passive: true });
