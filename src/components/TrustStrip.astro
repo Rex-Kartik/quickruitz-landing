@@ -1,16 +1,30 @@
 ---
-const companies = [
-  'TechCorp India', 'HireZen', 'Startup Hub', 'GlobalRecruits',
-  'CampusConnect', 'TalentForge', 'ScaleTeam', 'NextHire',
-  'TechCorp India', 'HireZen', 'Startup Hub', 'GlobalRecruits',
-  'CampusConnect', 'TalentForge', 'ScaleTeam', 'NextHire',
+// Realistic pilot target segments — no fake company logos
+const segments = [
+  { label: 'Early-stage Startups', icon: '🚀' },
+  { label: 'SME HR Teams', icon: '🏢' },
+  { label: 'Campus Placement Cells', icon: '🎓' },
+  { label: 'Staffing Agencies', icon: '🤝' },
+  { label: 'Tech-hiring Companies', icon: '💻' },
+  { label: 'Tier-2 & Tier-3 Colleges', icon: '🏫' },
+  { label: 'Product Companies', icon: '📦' },
+  { label: 'Recruitment Consultants', icon: '🔍' },
+  // Duplicate for seamless loop
+  { label: 'Early-stage Startups', icon: '🚀' },
+  { label: 'SME HR Teams', icon: '🏢' },
+  { label: 'Campus Placement Cells', icon: '🎓' },
+  { label: 'Staffing Agencies', icon: '🤝' },
+  { label: 'Tech-hiring Companies', icon: '💻' },
+  { label: 'Tier-2 & Tier-3 Colleges', icon: '🏫' },
+  { label: 'Product Companies', icon: '📦' },
+  { label: 'Recruitment Consultants', icon: '🔍' },
 ];
 ---
 
 <section class="border-y border-border bg-surface py-5 overflow-hidden">
   <div class="mx-auto max-w-7xl px-6 mb-4">
     <p class="text-center text-[10px] font-bold uppercase tracking-[0.12em] text-on-surface-muted">
-      Trusted by HR teams, Startups & Campus Placement Cells across India
+      Built for HR teams, startups &amp; campus placement cells across India — pilot signups open
     </p>
   </div>
 
@@ -22,12 +36,10 @@ const companies = [
     <div class="pointer-events-none absolute right-0 top-0 h-full w-24 z-10" style="background: linear-gradient(270deg, rgb(247,249,251) 0%, transparent 100%)"></div>
 
     <div class="flex animate-marquee gap-10 whitespace-nowrap">
-      {companies.map((name, i) => (
-        <div class="flex items-center gap-2 opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all">
-          <div class="h-6 w-6 rounded-md bg-on-surface/15 flex items-center justify-center text-[9px] font-black text-on-surface/60">
-            {name[0]}
-          </div>
-          <span class="text-sm font-semibold text-on-surface">{name}</span>
+      {segments.map((seg) => (
+        <div class="flex items-center gap-2.5 opacity-60 hover:opacity-90 transition-opacity">
+          <span class="text-base">{seg.icon}</span>
+          <span class="text-sm font-semibold text-on-surface">{seg.label}</span>
         </div>
       ))}
     </div>

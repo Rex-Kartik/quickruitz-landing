@@ -1,49 +1,91 @@
 ---
+const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://app.quickruit.in';
+
 const hrPlans = [
   {
     name: "Free Pilot",
     price: "₹0",
+    priceNote: "forever free",
     highlight: false,
-    features: ["1 Active Job Post", "20 AI Interview Credits", "Basic Candidate Match Scoring", "Credits valid for 30 days"],
-    cta: "Start Free",
-    href: "/employer/signup",
+    badge: null,
+    features: [
+      "1 Active Job Post",
+      "20 AI Interview Credits included",
+      "Basic Candidate Match Scoring",
+      "Full assessment + evidence pipeline",
+      "Credits valid for 30 days",
+    ],
+    cta: "Start Free Pilot",
+    href: `${APP_URL}/employer/signup`,
+    note: null,
   },
   {
     name: "Growth Credits",
     price: "₹4,999",
-    badge: "PAY ONCE, USE ANYTIME",
+    priceNote: "for 50 credits (₹99/interview)",
     highlight: true,
-    features: ["50 AI Interview Credits", "Unlimited Active Jobs", "Advanced Anti-Cheating & Proctoring", "Detailed Placement Readiness Reports", "Credits Never Expire"],
-    cta: "Scale Your Hiring",
-    href: "/book-demo",
+    badge: "MOST POPULAR",
+    features: [
+      "50 AI Interview Credits",
+      "Unlimited Active Job Posts",
+      "Advanced Proctoring & Integrity",
+      "Full Evidence Scorecard per candidate",
+      "CSV Export & Webhook Integration",
+      "Credits never expire",
+    ],
+    cta: "Get Growth Credits",
+    href: `${APP_URL}/employer/signup`,
+    note: "₹99 per interview · pay once, use anytime",
   },
   {
     name: "Enterprise",
     price: "Custom",
+    priceNote: "volume + custom SLA",
     highlight: false,
-    features: ["500+ Interview Capacity per drive", "Flat fee per drive", "Custom Branding (White-labeling)", "Dedicated Account Manager & SLA"],
+    badge: null,
+    features: [
+      "500+ Interview capacity per drive",
+      "Dedicated Account Manager",
+      "Custom Branding & White-labeling",
+      "API + Webhook ATS Integration",
+      "Priority support & SLA",
+    ],
     cta: "Contact Us",
     href: "/contact",
+    note: "ATS integrations via Webhook/API — native push on roadmap",
   },
 ];
 
 const campusPlans = [
   {
     name: "Campus Starter",
-    price: "₹7,499",
+    price: "₹4,999",
     detail: "per drive",
     highlight: false,
-    features: ["1 Placement Drive (150 students)", "AI Video Interviews for all", "Automated scoring + ranking", "Results in 24 hours"],
+    badge: null,
+    features: [
+      "1 Placement Drive (up to 150 students)",
+      "AI Video Interviews for all students",
+      "Automated scoring + ranked shortlist",
+      "Individual placement readiness reports",
+      "Results delivered within 24 hours",
+    ],
     cta: "Start Your First Drive",
     href: "/contact",
   },
   {
     name: "Campus Pro",
-    price: "₹14,999",
+    price: "₹12,999",
     detail: "per semester",
-    badge: "MOST POPULAR FOR COLLEGES",
     highlight: true,
-    features: ["Up to 3 Drives per semester", "Up to 400 students per drive", "Full AI video + skill assessment", "Placement readiness reports"],
+    badge: "BEST FOR COLLEGES",
+    features: [
+      "Up to 3 Placement Drives per semester",
+      "Up to 400 students per drive",
+      "Full AI video + aptitude assessment",
+      "Cohort performance dashboard",
+      "Role-specific placement readiness reports",
+    ],
     cta: "Automate Your Semester",
     href: "/contact",
   },
@@ -52,28 +94,34 @@ const campusPlans = [
     price: "₹29,999",
     detail: "per year",
     highlight: false,
-    features: ["Unlimited Drives", "Up to 2,000 students per year", "White-label portal with college branding", "API integration with college ERP"],
+    badge: null,
+    features: [
+      "Unlimited Placement Drives",
+      "Up to 2,000 students per year",
+      "White-label portal with college branding",
+      "Dedicated onboarding + support",
+    ],
     cta: "Partner With Us",
     href: "/contact",
   },
 ];
 ---
 
-<section id="pricing" class="bg-white py-24">
+<section id="pricing" class="bg-surface py-24">
   <div class="mx-auto max-w-6xl px-6">
     <!-- Header -->
     <div class="mb-16 text-center">
       <span class="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
         Simple, Transparent Pricing
       </span>
-      <h2 class="text-4xl font-black tracking-tight text-on-surface sm:text-5xl">Scale Your Hiring Automation</h2>
+      <h2 class="text-4xl font-black tracking-tight text-on-surface sm:text-5xl">Start free. Pay as you grow.</h2>
       <p class="mx-auto mt-4 max-w-xl text-lg font-medium text-on-surface-muted">
-        Start automating your first round for free. No hidden fees, no lock-ins.
+        Your first 20 AI interviews are on us. Then only ₹99 per interview — no subscriptions, no lock-ins.
       </p>
     </div>
 
     <!-- HR Plans -->
-    <h3 class="mb-8 text-center text-2xl font-black text-on-surface">For HR & Companies</h3>
+    <h3 class="mb-8 text-center text-2xl font-black text-on-surface">For HR &amp; Companies</h3>
     <div class="mb-16 grid grid-cols-1 gap-6 md:grid-cols-3">
       {hrPlans.map(plan => (
         <div class={`relative flex flex-col rounded-2xl p-8 transition-all hover:-translate-y-1 ${
@@ -89,9 +137,10 @@ const campusPlans = [
             </div>
           )}
           <h4 class="mb-1 text-lg font-black text-on-surface">{plan.name}</h4>
-          <div class="mb-6">
+          <div class="mb-1">
             <span class="text-3xl font-black text-on-surface">{plan.price}</span>
           </div>
+          <p class="mb-6 text-xs font-semibold text-on-surface-muted">{plan.priceNote}</p>
           <ul class="mb-8 flex-1 space-y-3">
             {plan.features.map(f => (
               <li class="flex items-start gap-3 text-sm">
@@ -103,6 +152,9 @@ const campusPlans = [
               </li>
             ))}
           </ul>
+          {plan.note && (
+            <p class="mb-4 rounded-xl bg-primary/5 px-4 py-2.5 text-xs font-semibold text-primary text-center">{plan.note}</p>
+          )}
           <a href={plan.href} class={`block w-full rounded-xl py-3 text-center text-sm font-bold transition-all hover:-translate-y-0.5 ${
             plan.highlight
               ? 'bg-primary text-white shadow-md shadow-primary/30 hover:bg-primary-dark'
@@ -113,7 +165,7 @@ const campusPlans = [
     </div>
 
     <!-- Campus Plans -->
-    <h3 class="mb-8 text-center text-2xl font-black text-on-surface">For Campus Colleges</h3>
+    <h3 class="mb-8 text-center text-2xl font-black text-on-surface">For Campus &amp; Colleges</h3>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
       {campusPlans.map(plan => (
         <div class={`relative flex flex-col rounded-2xl p-8 transition-all hover:-translate-y-1 ${
@@ -151,6 +203,13 @@ const campusPlans = [
           }`}>{plan.cta} →</a>
         </div>
       ))}
+    </div>
+
+    <!-- Honest FAQ note -->
+    <div class="mt-12 rounded-2xl border border-border bg-surface p-6 text-center">
+      <p class="text-sm font-medium text-on-surface-muted">
+        💡 <strong class="text-on-surface">No hidden fees.</strong> Credits are consumed per AI interview conducted. Aptitude and coding assessments are included at no extra cost. Campus starter packs begin at ₹4,999 per drive.
+      </p>
     </div>
   </div>
 </section>
