@@ -2,97 +2,56 @@
 const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'http://localhost:5173';
 ---
 
-<section class="relative overflow-hidden bg-white pt-20 pb-0" id="hero">
-  <!-- Subtle blue radial glow behind content -->
-  <div class="pointer-events-none absolute -top-60 left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-primary/5 blur-[100px]"></div>
-  <div class="pointer-events-none absolute top-1/2 -right-40 h-[400px] w-[400px] -translate-y-1/2 rounded-full bg-primary/4 blur-[80px]"></div>
+<section class="relative overflow-hidden bg-white pb-0 pt-10 sm:pt-12 lg:pt-16" id="hero">
 
-  <div class="relative mx-auto max-w-6xl px-6">
-    <!-- Eyebrow -->
-    <div class="mb-7 flex justify-center">
-      <a
-        href="#features"
-        class="inline-flex items-center gap-2 rounded-pill border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold text-primary transition-all hover:border-primary/40 hover:bg-primary/10"
-      >
-        <span class="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-primary"></span>
-        Evidence-Based Hiring Platform
-        <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </a>
-    </div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl text-center">
+      <!-- Headline -->
+      <div class="text-center mb-6 mt-4 motion-safe:animate-fade-up">
+        <h1 class="mx-auto max-w-[1200px] text-[32px] sm:text-[40px] md:text-[44px] lg:text-[46px] xl:text-[50px] font-medium leading-[1.25] tracking-tight text-[#1f2937]">
+          <span class="block">Resumes don't predict <span class="text-primary">success.</span></span>
+          <span class="block mt-1 whitespace-normal lg:whitespace-nowrap">Hire based on the true <span class="text-primary">skills</span> that do.</span>
+        </h1>
+      </div>
 
-    <!-- Headline -->
-    <div class="text-center mb-7">
-      <h1 class="text-[52px] sm:text-[64px] lg:text-[76px] font-black leading-[1.05] tracking-[-0.02em] text-on-surface">
-        Know who can
-        <br />
-        <span class="text-primary">actually do the job.</span>
-      </h1>
-    </div>
+      <!-- Subheading -->
+      <p class="mx-auto mb-8 max-w-[1100px] text-center text-[20px] sm:text-[22px] lg:text-[24px] font-medium leading-[1.6] text-[#4d566b] motion-safe:animate-fade-up" style="animation-delay:140ms">
+        Get clear, evidence-backed insight into every candidate’s skills and performance — so your team can shortlist with confidence, spend less time screening, and focus on the people worth talking to.
+      </p>
 
-    <!-- Subheading -->
-    <p class="mx-auto mb-5 max-w-[620px] text-center text-lg font-medium leading-relaxed text-on-surface-muted">
-      Assess candidates on real skills. Adapt the difficulty. Generate evidence. Make better hires faster — with or without a large team.
-    </p>
+      <!-- Value bullets -->
+      <div class="mx-auto mt-7 flex max-w-3xl flex-wrap justify-center gap-x-7 gap-y-3 text-[13px] font-semibold text-on-surface-muted motion-safe:animate-fade-up" style="animation-delay:190ms">
+        {[
+          { label: 'Save 70% screening time', icon: '⚡' },
+          { label: 'Build hiring evidence', icon: '🎯' },
+          { label: 'Hire with confidence', icon: '✅' },
+        ].map((item) => <span class="inline-flex items-center gap-2"><span aria-hidden="true">{item.icon}</span>{item.label}</span>)}
+      </div>
 
-    <!-- Value bullets -->
-    <div class="mb-10 flex flex-wrap justify-center gap-x-8 gap-y-2">
-      {[
-        { label: 'Save 70% screening time', icon: '⚡' },
-        { label: 'Build hiring evidence', icon: '🎯' },
-        { label: 'Hire with confidence', icon: '✅' },
-      ].map(b => (
-        <div class="flex items-center gap-2 text-sm font-semibold text-on-surface-muted">
-          <span>{b.icon}</span>
-          <span>{b.label}</span>
-        </div>
-      ))}
-    </div>
+      <!-- CTAs -->
+      <div class="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row motion-safe:animate-fade-up" style="animation-delay:240ms">
+        <a href={`${APP_URL}/employer/signup`} class="inline-flex min-w-[180px] items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-[17px] font-semibold text-white transition-all duration-200 hover:bg-primary-dark hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Get Started</a>
+        <a href={`${APP_URL}/book-demo`} class="inline-flex min-w-[220px] items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-[17px] font-semibold text-white transition-all duration-200 hover:bg-primary-dark hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Find Your Subscription</a>
+      </div>
 
-    <!-- CTAs -->
-    <div class="mb-4 flex flex-col items-center justify-center gap-3 sm:flex-row">
-      <a
-        href={`${APP_URL}/employer/signup`}
-        class="inline-flex items-center gap-2 rounded-pill bg-primary px-8 py-3.5 text-sm font-bold text-white shadow-card-blue transition-all hover:bg-primary-dark hover:shadow-glow-blue hover:-translate-y-0.5 active:scale-[0.97]"
-      >
-        Start Free Pilot
-        <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </a>
-      <a
-        href={`${APP_URL}/book-demo`}
-        class="inline-flex items-center gap-2 rounded-pill border border-border px-8 py-3.5 text-sm font-bold text-on-surface transition-all hover:border-primary/30 hover:bg-surface-blue hover:-translate-y-0.5"
-      >
-        See it in action
-        <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.3"/><path d="M6 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/></svg>
-      </a>
-    </div>
+      <p class="mt-4 text-[11px] font-medium text-on-surface-muted/80 motion-safe:animate-fade-up" style="animation-delay:290ms">Free pilot · 20 credits included · No credit card required</p>
+      <p class="mx-auto mt-12 max-w-4xl text-xs font-semibold leading-6 text-on-surface-muted/75 motion-safe:animate-fade-up sm:text-sm" style="animation-delay:330ms">Built for startups, scaleups, HR recruiters, TA teams, staffing &amp; recruiting agencies, universities</p>
 
-    <!-- Micro-copy -->
-    <p class="mb-12 text-center text-xs font-medium text-on-surface-muted">
-      Free pilot · 20 credits included · No credit card required
-    </p>
-
-    <!-- Tab Strip -->
-    <div id="hero-tabs" class="mb-0 flex flex-wrap justify-center gap-1.5 px-2">
-      {[
-        { id: 'aptitude', label: 'Aptitude' },
-        { id: 'adaptive', label: 'Adaptive' },
-        { id: 'interview', label: 'AI Interview', badge: 'BETA' },
-        { id: 'coding', label: 'Coding' },
-        { id: 'intelligence', label: 'Intelligence' },
-      ].map((tab, i) => (
-        <button
-          class={`hero-tab relative rounded-pill px-5 py-2 text-sm font-semibold transition-all ${i === 0 ? 'bg-primary text-white shadow-sm' : 'bg-surface text-on-surface-muted hover:bg-surface-blue hover:text-primary border border-border'}`}
-          data-tab={tab.id}
-          aria-selected={i === 0}
-        >
-          {tab.label}
-          {tab.badge && (
-            <span class="ml-1.5 rounded-md bg-amber-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-widest text-amber-700">
-              {tab.badge}
-            </span>
-          )}
-        </button>
-      ))}
+      <!-- Product capability selector -->
+      <div id="hero-tabs" class="mt-7 flex flex-wrap justify-center gap-1.5 px-2 motion-safe:animate-fade-up" style="animation-delay:370ms" role="tablist" aria-label="QuickRuit product capabilities">
+        {[
+          { id: 'aptitude', label: 'Aptitude' },
+          { id: 'adaptive', label: 'Adaptive' },
+          { id: 'interview', label: 'AI Interview', badge: 'BETA' },
+          { id: 'coding', label: 'Coding' },
+          { id: 'intelligence', label: 'Intelligence' },
+        ].map((tab, i) => (
+          <button type="button" role="tab" aria-selected={i === 0} class={`hero-tab relative rounded-full px-5 py-2.5 text-xs font-bold transition-all duration-200 ${i === 0 ? 'bg-primary text-white shadow-[0_8px_18px_rgba(0,82,255,0.18)]' : 'border border-border bg-white text-on-surface-muted hover:border-primary/25 hover:bg-surface-blue hover:text-primary'}`} data-tab={tab.id}>
+            {tab.label}{tab.badge && <span class="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-[0.12em] text-amber-700">{tab.badge}</span>}
+          </button>
+        ))}
+      </div>
+      <div class="mt-4 flex items-center justify-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-on-surface-muted/60"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Live product preview <span class="text-border">/</span> One workflow, every signal connected</div>
     </div>
   </div>
 
