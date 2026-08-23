@@ -9,25 +9,17 @@ const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'http://localhost:5173';
 
   <div class="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-5xl text-center">
-      <!-- Eyebrow -->
-      <div class="flex justify-center motion-safe:animate-fade-up">
-        <a href="#features" class="group inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.045] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-primary transition-all duration-200 hover:border-primary/40 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-          <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/35 motion-reduce:animate-none"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-primary"></span></span>
-          Evidence-Based Hiring Platform
-          <svg class="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </a>
+      <!-- Headline -->
+      <div class="text-center mb-6 mt-8 motion-safe:animate-fade-up">
+        <h1 class="mx-auto max-w-[1200px] text-[32px] sm:text-[40px] md:text-[44px] lg:text-[46px] xl:text-[50px] font-medium leading-[1.25] tracking-tight text-[#1f2937]">
+          <span class="block">Resumes tell you what candidates <span class="text-primary">claim.</span></span>
+          <span class="block mt-1 whitespace-normal lg:whitespace-nowrap">QuickRuit shows what they can <span class="text-primary whitespace-nowrap">actually do.</span></span>
+        </h1>
       </div>
 
-      <!-- Headline -->
-      <h1 class="mx-auto mt-8 max-w-5xl text-[clamp(2.75rem,5vw,4.25rem)] font-bold leading-[1.04] tracking-[-0.045em] text-on-surface motion-safe:animate-fade-up" style="animation-delay:80ms">
-        Resumes tell you what they claim.<br />
-        <span>QuickRuit shows you</span><br class="hidden sm:block" />
-        <span class="text-primary"> what they can do.</span>
-      </h1>
-
       <!-- Subheading -->
-      <p class="mx-auto mt-7 max-w-2xl text-base font-medium leading-7 text-on-surface-muted sm:text-lg motion-safe:animate-fade-up" style="animation-delay:140ms">
-        Every candidate completes a structured evaluation. QuickRuit turns their performance into an evidence-backed scorecard your team can act on — not another gut feeling.
+      <p class="mx-auto mb-5 max-w-[800px] text-center text-[18px] font-normal leading-relaxed text-[#4d566b] motion-safe:animate-fade-up" style="animation-delay:140ms">
+        QuickRuit gives you validated, defensible, and predictive insights, so you gain the clarity and confidence to hire better and grow your business.
       </p>
 
       <!-- Value bullets -->
@@ -40,9 +32,9 @@ const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'http://localhost:5173';
       </div>
 
       <!-- CTAs -->
-      <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row motion-safe:animate-fade-up" style="animation-delay:240ms">
-        <a href={`${APP_URL}/employer/signup`} class="inline-flex min-w-[174px] items-center justify-center gap-2 rounded-[6px] bg-primary px-7 py-3.5 text-xs font-extrabold uppercase tracking-[0.08em] text-white shadow-[0_12px_28px_rgba(0,82,255,0.18)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-glow-blue active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Get Started <span class="text-base leading-none" aria-hidden="true">→</span></a>
-        <a href={`${APP_URL}/book-demo`} class="inline-flex min-w-[220px] items-center justify-center gap-2 rounded-[6px] border border-border bg-white px-7 py-3.5 text-xs font-extrabold uppercase tracking-[0.08em] text-on-surface transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:bg-surface-blue active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Find Your Subscription <span class="text-base leading-none" aria-hidden="true">→</span></a>
+      <div class="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row motion-safe:animate-fade-up" style="animation-delay:240ms">
+        <a href={`${APP_URL}/employer/signup`} class="inline-flex min-w-[180px] items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-[16px] font-medium text-white transition-all duration-200 hover:bg-primary-dark hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Get Started</a>
+        <a href={`${APP_URL}/book-demo`} class="inline-flex min-w-[220px] items-center justify-center gap-2 rounded-full border border-border bg-white text-on-surface px-8 py-3.5 text-[16px] font-medium transition-all duration-200 hover:border-primary/35 hover:bg-surface-blue hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Find Your Subscription</a>
       </div>
 
       <p class="mt-4 text-[11px] font-medium text-on-surface-muted/80 motion-safe:animate-fade-up" style="animation-delay:290ms">Free pilot · 20 credits included · No credit card required</p>
