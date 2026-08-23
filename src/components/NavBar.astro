@@ -109,15 +109,16 @@ const navItems = [
     </div>
 
     <!-- Centered Nav Links -->
-    <nav class="hidden lg:flex flex-auto justify-center gap-4 xl:gap-8" aria-label="Primary navigation">
+    <nav class="hidden min-w-0 flex-auto justify-center gap-2 lg:flex xl:gap-4" aria-label="Primary navigation">
       {navItems.map((nav) => (
         <div class="relative nav-dropdown-wrap flex items-center h-full" data-menu={nav.id}>
-          <button type="button" aria-expanded="false" aria-controls={`menu-${nav.id}`} class="nav-dropdown-btn group inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-[15px] font-semibold text-on-surface-muted transition-colors hover:bg-surface hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary aria-expanded:text-primary">
+          <button type="button" aria-expanded="false" aria-controls={`menu-${nav.id}`} class="nav-dropdown-btn group relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-2 text-[15px] font-semibold text-on-surface-muted transition-colors hover:bg-surface hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary aria-expanded:text-primary">
             {nav.label}
             <svg class="nav-chevron h-3.5 w-3.5 text-on-surface-muted/50 transition-transform duration-200 group-hover:text-on-surface-muted group-aria-expanded:text-primary" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="nav-active-line" aria-hidden="true"></span>
           </button>
           
-          <div id={`menu-${nav.id}`} class="nav-menu invisible absolute left-1/2 top-[76px] -translate-x-1/2 translate-y-3 opacity-0 transition-all duration-200 ease-out" aria-hidden="true">
+          <div id={`menu-${nav.id}`} class="nav-menu invisible absolute left-0 top-[76px] translate-y-3 opacity-0 transition-all duration-200 ease-out" aria-hidden="true">
             <!-- Invisible hit area to prevent hover gaps -->
             <div class="absolute -top-6 left-0 right-0 h-6 bg-transparent"></div>
             
@@ -174,15 +175,15 @@ const navItems = [
     </nav>
 
     <!-- Right Actions -->
-    <div class="hidden w-[260px] items-center justify-end gap-5 lg:flex">
-      <!-- Log In Text Link -->
-      <a href={`${APP_URL}/employer/login`} class="text-[15px] font-semibold text-on-surface hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">Log In</a>
-      
-      <!-- Divider -->
-      <div class="h-5 w-[1.5px] bg-border"></div>
-      
-      <!-- Request Demo Solid Pill -->
-      <a href={`${APP_URL}/book-demo`} class="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-[15px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-md active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Request Demo</a>
+    <div class="hidden w-[350px] items-center justify-end gap-4 xl:gap-5 lg:flex">
+      <!-- Search affordance -->
+      <a href="#features" aria-label="Explore QuickRuit features" class="flex h-9 w-9 items-center justify-center rounded-full text-on-surface-muted transition-colors hover:bg-surface hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+        <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </a>
+      <div class="h-5 w-px bg-border"></div>
+      <a href={`${APP_URL}/employer/login`} class="whitespace-nowrap text-[15px] font-semibold text-on-surface transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">Sign in</a>
+      <a href={`${APP_URL}/book-demo`} class="inline-flex h-11 items-center justify-center border border-primary bg-white px-5 text-[12px] font-extrabold uppercase tracking-[0.08em] text-primary transition-all hover:-translate-y-0.5 hover:bg-primary/5 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Request a Demo</a>
+      <a href={`${APP_URL}/employer/signup`} class="inline-flex h-11 items-center justify-center bg-primary px-5 text-[12px] font-extrabold uppercase tracking-[0.08em] text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-md active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Get Started</a>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -209,9 +210,10 @@ const navItems = [
         </div>
       ))}
     </nav>
-    <div class="mt-8 flex flex-col gap-3">
-      <a href={`${APP_URL}/employer/login`} class="rounded-xl border border-border py-3.5 text-center text-[15px] font-bold text-on-surface transition-colors hover:bg-surface">Log In</a>
-      <a href={`${APP_URL}/book-demo`} class="rounded-xl bg-primary py-3.5 text-center text-[15px] font-bold text-white transition-colors hover:bg-primary-dark">Request Demo</a>
+    <div class="mt-8 grid grid-cols-2 gap-3">
+      <a href={`${APP_URL}/employer/login`} class="rounded-xl border border-border py-3.5 text-center text-[13px] font-extrabold uppercase tracking-[0.06em] text-on-surface transition-colors hover:bg-surface">Sign in</a>
+      <a href={`${APP_URL}/book-demo`} class="rounded-xl border border-primary py-3.5 text-center text-[13px] font-extrabold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-primary/5">Request Demo</a>
+      <a href={`${APP_URL}/employer/signup`} class="col-span-2 rounded-xl bg-primary py-3.5 text-center text-[13px] font-extrabold uppercase tracking-[0.06em] text-white transition-colors hover:bg-primary-dark">Get Started <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </header>
@@ -330,3 +332,30 @@ const navItems = [
     nav?.classList.toggle('shadow-[0_4px_24px_rgba(15,31,58,0.06)]', elevated);
   }, { passive: true });
 </script>
+
+<style>
+  .nav-active-line {
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: -0.1rem;
+    height: 2px;
+    border-radius: 9999px;
+    background: #0052ff;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .nav-dropdown-btn:hover .nav-active-line,
+  .nav-dropdown-btn:focus-visible .nav-active-line,
+  .nav-dropdown-btn[aria-expanded='true'] .nav-active-line {
+    transform: scaleX(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-active-line {
+      transition: none;
+    }
+  }
+</style>
