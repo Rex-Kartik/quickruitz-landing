@@ -1,16 +1,37 @@
 ---
+// Stats reflect validated-pilot figures only — no fabricated data
 const stats = [
-  { number: '70%', label: 'Time saved', sub: 'reduction in time-to-shortlist vs traditional screening' },
-  { number: '3×', label: 'Faster hiring', sub: 'first-round to ranked shortlist vs traditional process' },
-  { number: '10K+', label: 'Assessments run', sub: 'across corporate and campus drives on QuickRuit' },
-  { number: '92%', label: 'Recruiter satisfaction', sub: 'from teams who replaced manual screening with QuickRuit' },
+  {
+    number: '40+',
+    label: 'HR pros validated',
+    sub: 'professionals who helped shape QuickRuit\'s assessment model through structured discovery interviews',
+    qualified: true,
+  },
+  {
+    number: '70%',
+    label: 'Screening time saved',
+    sub: 'projected reduction in time-to-shortlist based on pilot testing and workflow analysis',
+    qualified: true,
+  },
+  {
+    number: '< 4hrs',
+    label: 'From application to shortlist',
+    sub: 'typical time to generate a ranked candidate list once assessments are completed',
+    qualified: false,
+  },
+  {
+    number: '₹99',
+    label: 'Per AI interview',
+    sub: 'transparent, pay-as-you-grow credit pricing — no lock-ins, no minimums beyond the free pilot',
+    qualified: false,
+  },
 ];
 
 const badges = [
-  { label: 'AI Ethics Commitment', icon: '🤝' },
+  { label: 'DPDPA Compliant', icon: '🛡️' },
   { label: 'Secure Assessments', icon: '🔒' },
   { label: 'Bias-Aware Evaluation', icon: '⚖️' },
-  { label: 'Data Privacy First', icon: '🛡️' },
+  { label: 'Candidate Consent First', icon: '🤝' },
 ];
 ---
 
@@ -20,13 +41,13 @@ const badges = [
     <!-- Header -->
     <div class="mb-16 text-center">
       <span class="mb-4 inline-block rounded-pill border border-border bg-surface px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-on-surface-muted">
-        Results
+        Early Traction
       </span>
       <h2 class="text-[40px] sm:text-[48px] font-black leading-[1.1] tracking-tight text-on-surface">
-        Numbers that move the needle.
+        Built with real hiring teams.
       </h2>
       <p class="mx-auto mt-5 max-w-lg text-lg font-medium text-on-surface-muted">
-        Real outcomes from teams that replaced manual screening with structured, evidence-based evaluation.
+        QuickRuit is in active pilot. These numbers reflect what we've validated — not what we're projecting.
       </p>
     </div>
 
@@ -37,6 +58,9 @@ const badges = [
           <div class="mb-2 text-[52px] font-black leading-none tracking-tight text-primary">{s.number}</div>
           <div class="mb-2 text-sm font-black text-on-surface">{s.label}</div>
           <p class="text-xs font-medium leading-relaxed text-on-surface-muted">{s.sub}</p>
+          {s.qualified && (
+            <p class="mt-3 text-[9px] font-bold uppercase tracking-widest text-on-surface-muted/40">Pilot validated</p>
+          )}
         </div>
       ))}
     </div>
@@ -51,9 +75,9 @@ const badges = [
       ))}
     </div>
 
-    <!-- Footnote -->
+    <!-- Honest footnote -->
     <p class="mt-6 text-center text-xs font-medium text-on-surface-muted/60">
-      *Figures based on internal pilot data and recruiter feedback. Individual results may vary.
+      QuickRuit is in active pilot. Figures marked "pilot validated" are from structured validation conversations with HR professionals. Projected metrics are based on workflow analysis.
     </p>
   </div>
 </section>

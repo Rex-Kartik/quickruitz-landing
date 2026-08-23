@@ -3,23 +3,26 @@ const stats = [
   {
     number: '78%',
     label: 'of bad hires',
-    context: 'could have been caught with better skills assessment before the offer',
+    context: 'could have been caught earlier — with a structured skills assessment instead of resume guesswork.',
     color: 'border-red-200 bg-red-50',
     numberColor: 'text-red-500',
+    source: 'SHRM, 2023',
   },
   {
     number: '23hrs',
     label: 'per week',
-    context: 'the average recruiter spends on manual resume screening — time that could be saved',
+    context: 'the average recruiter spends manually screening resumes — before a single real interview happens.',
     color: 'border-amber-200 bg-amber-50',
     numberColor: 'text-amber-600',
+    source: 'LinkedIn Talent Trends',
   },
   {
     number: '1 in 3',
     label: 'candidates',
-    context: 'exaggerates qualifications on their resume, making gut-feel hiring risky',
+    context: 'exaggerates qualifications on their resume — making gut-feel decisions dangerously unreliable.',
     color: 'border-orange-200 bg-orange-50',
     numberColor: 'text-orange-500',
+    source: 'HireRight Survey',
   },
 ];
 ---
@@ -33,12 +36,62 @@ const stats = [
         The Problem
       </span>
       <h2 class="text-[40px] sm:text-[48px] font-black leading-[1.1] tracking-tight text-on-surface">
-        Most hiring still runs<br />
+        Hiring still runs<br />
         on <span class="text-on-surface-muted line-through decoration-red-400 decoration-2">gut feeling.</span>
       </h2>
       <p class="mt-5 max-w-xl text-lg font-medium leading-relaxed text-on-surface-muted">
-        Resumes tell you what candidates claim. Interviews surface who's confident. Neither tells you who can actually do the work.
+        Resumes tell you what candidates claim. Interviews surface who's most confident. Neither tells you who can actually do the work.
       </p>
+    </div>
+
+    <!-- Founder origin story card -->
+    <div class="mb-16 rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/4 to-blue-50/60 p-8 lg:p-10">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-12">
+        <!-- Left: quote mark + story -->
+        <div class="flex-1">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-8 w-8 items-center justify-center rounded-xl bg-primary/10">
+              <svg class="h-4 w-4 text-primary" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M3.5 8.5A3.5 3.5 0 017 5h.5V3H7a5.5 5.5 0 00-5.5 5.5V13h4V8.5H3.5zm8 0A3.5 3.5 0 0115 5h.5V3H15a5.5 5.5 0 00-5.5 5.5V13h4V8.5h-2z"/>
+              </svg>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-widest text-primary">Built from both sides of the problem</span>
+          </div>
+          <p class="mb-4 text-[17px] font-medium leading-relaxed text-on-surface">
+            I applied to 60+ companies as an engineering student. Most applications disappeared into silence. Not because I wasn't qualified — but because recruiters had <strong>500 resumes and no way to prove who was actually capable.</strong>
+          </p>
+          <p class="text-base font-medium leading-relaxed text-on-surface-muted">
+            When I talked to 40+ HR professionals, I heard the same frustration from the other side: "I'm drowning in applications, but none of them give me <em>proof</em>." That's why QuickRuit exists — to replace claims with evidence, for both sides of the table.
+          </p>
+          <div class="mt-5 flex items-center gap-3">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-primary to-blue-700 text-sm font-black text-white">R</div>
+            <div>
+              <p class="text-sm font-bold text-on-surface">Rahul Shrivastwa</p>
+              <p class="text-xs font-medium text-on-surface-muted">Founder, QuickRuit · Validated with 40+ HR professionals</p>
+            </div>
+          </div>
+        </div>
+        <!-- Right: two-side contrast -->
+        <div class="lg:w-72 flex flex-col gap-3">
+          <div class="rounded-xl border border-red-100 bg-red-50 p-4">
+            <p class="mb-1 text-[10px] font-bold uppercase tracking-widest text-red-400">Candidate's reality</p>
+            <p class="text-sm font-medium text-on-surface-muted leading-relaxed">Spent weeks applying. Never heard back. No way to prove skills beyond a PDF.</p>
+          </div>
+          <div class="flex justify-center">
+            <svg class="h-5 w-5 text-on-surface-muted/30 rotate-90 lg:rotate-0" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 3l7 7-7 7M3 10h14" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="rounded-xl border border-amber-100 bg-amber-50 p-4">
+            <p class="mb-1 text-[10px] font-bold uppercase tracking-widest text-amber-500">Recruiter's reality</p>
+            <p class="text-sm font-medium text-on-surface-muted leading-relaxed">500 resumes, 3 weeks, gut-feel shortlist. No structured way to know who can actually do the job.</p>
+          </div>
+          <div class="rounded-xl border border-primary/20 bg-primary/5 p-4">
+            <p class="mb-1 text-[10px] font-bold uppercase tracking-widest text-primary">The QuickRuit answer</p>
+            <p class="text-sm font-medium text-on-surface leading-relaxed">Replace claims with <strong>evidence</strong>. A shortlist built on what candidates can do — not what they say.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Stats grid -->
@@ -48,6 +101,7 @@ const stats = [
           <div class={`mb-1 text-5xl font-black ${s.numberColor}`}>{s.number}</div>
           <div class="mb-2 text-sm font-bold text-on-surface">{s.label}</div>
           <p class="text-sm font-medium leading-relaxed text-on-surface-muted">{s.context}</p>
+          <p class="mt-3 text-[10px] font-medium text-on-surface-muted/50">Source: {s.source}</p>
         </div>
       ))}
     </div>
@@ -67,7 +121,7 @@ const stats = [
             <span class="text-xs font-bold uppercase tracking-wider text-on-surface-muted">The Old Way</span>
           </div>
           <ul class="space-y-2.5 text-sm text-on-surface-muted font-medium">
-            {['Post job → collect 500 resumes', 'Skim manually for 3 weeks', 'Phone screen based on CV quality', 'Interview gut-feel shortlist', 'Hire, hope for the best'].map(item => (
+            {['Post job → 500 resumes flood in', '3 weeks of manual skimming', 'Phone screen based on CV quality', 'Interview gut-feel shortlist', 'Hire — hope for the best'].map(item => (
               <li class="flex items-start gap-2.5">
                 <span class="mt-0.5 text-red-400 flex-shrink-0">—</span>
                 <span>{item}</span>
@@ -90,9 +144,9 @@ const stats = [
             {[
               'Post job → candidates auto-invited to assess',
               'Aptitude + adaptive technical assessment',
-              'AI-evaluated async video interview',
-              'Candidate Intelligence scorecard with evidence',
-              'Hire with confidence — not guesswork',
+              'AI-evaluated async video interview (Beta)',
+              'Structured evidence scorecard per candidate',
+              'Hire with confidence — backed by proof',
             ].map(item => (
               <li class="flex items-start gap-2.5">
                 <span class="mt-0.5 text-primary flex-shrink-0">✓</span>
@@ -106,17 +160,18 @@ const stats = [
       <!-- Right: key message -->
       <div>
         <h3 class="mb-5 text-[32px] font-black leading-[1.15] tracking-tight text-on-surface">
-          Skills don't lie.<br />
-          <span class="text-primary">Resumes do.</span>
+          Resumes tell you<br />
+          what they <span class="text-on-surface-muted line-through decoration-red-400 decoration-2">claim.</span><br />
+          <span class="text-primary">QuickRuit shows you<br />what they can do.</span>
         </h3>
         <p class="mb-8 text-lg font-medium leading-relaxed text-on-surface-muted">
-          QuickRuit replaces gut-feel with evidence. Every candidate goes through structured assessment and their performance generates a scorecard you can actually act on.
+          Every candidate completes a structured evaluation. Their performance generates a scorecard with specific evidence your team can act on — not a vague gut feeling.
         </p>
         <div class="space-y-4">
           {[
-            { title: 'Assess on real skills', desc: 'Role-specific aptitude and technical questions, not generic IQ tests.' },
-            { title: 'Adapt to each candidate', desc: 'Difficulty changes based on performance — so you understand their ceiling.' },
-            { title: 'Generate evidence', desc: 'AI extracts signals from every test, answer, and interview response.' },
+            { title: 'Assess on real skills', desc: 'Role-specific aptitude and technical questions tailored to the job, not generic IQ tests.' },
+            { title: 'Adapt to each candidate', desc: 'Difficulty changes based on their answers — so you understand their ceiling, not just their floor.' },
+            { title: 'Generate evidence', desc: 'AI extracts specific signals from every assessment answer, coding submission, and interview response.' },
           ].map(point => (
             <div class="flex items-start gap-4">
               <div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">

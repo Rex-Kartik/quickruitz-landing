@@ -1,0 +1,120 @@
+---
+const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://app.quickruit.in';
+
+const integrityFeatures = [
+  {
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M10 2L3 6v5c0 4.418 3.134 8.276 7 9 3.866-.724 7-4.582 7-9V6l-7-4z"/></svg>`,
+    title: 'DPDPA-Aligned Consent',
+    desc: 'Candidates see a clear, plain-English consent screen before the session begins. No hidden data collection. Compliant with India\'s Digital Personal Data Protection Act.',
+    color: 'bg-blue-50 border-blue-100',
+    iconBg: 'bg-blue-500',
+  },
+  {
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="3" y="3" width="14" height="10" rx="2"/><path d="M7 17h6M10 13v4"/></svg>`,
+    title: 'Tab-Switch & Focus Detection',
+    desc: 'DOM focus loss events are tracked and timestamped. Candidates are warned in-session. Recruiters see a full integrity log — not a disqualification, but context.',
+    color: 'bg-amber-50 border-amber-100',
+    iconBg: 'bg-amber-500',
+  },
+  {
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path d="M10 2C5.5 2 2 6.5 2 10s3.5 8 8 8 8-3.5 8-8-3.5-8-8-8z"/></svg>`,
+    title: 'MediaPipe Gaze Tracking',
+    desc: 'Optional face-presence monitoring using in-browser ML — no server video upload. Detects if a candidate looks away or leaves the frame. Data stays local.',
+    color: 'bg-violet-50 border-violet-100',
+    iconBg: 'bg-violet-500',
+  },
+  {
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+    title: 'Candidate Checklist',
+    desc: 'Before the test starts, candidates see an honest breakdown: duration, question count, proctoring scope, and browser permissions required. No surprises.',
+    color: 'bg-emerald-50 border-emerald-100',
+    iconBg: 'bg-emerald-500',
+  },
+];
+---
+
+<section class="bg-white py-24" id="integrity">
+  <div class="mx-auto max-w-7xl px-6">
+
+    <!-- Header -->
+    <div class="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+      <div>
+        <span class="mb-4 inline-block rounded-pill border border-border bg-surface px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-on-surface-muted">
+          Candidate Experience
+        </span>
+        <h2 class="text-[40px] sm:text-[48px] font-black leading-[1.1] tracking-tight text-on-surface">
+          Fair to candidates.<br />
+          <span class="text-primary">Trustworthy for recruiters.</span>
+        </h2>
+        <p class="mt-5 text-lg font-medium leading-relaxed text-on-surface-muted">
+          We built QuickRuit knowing that candidates are people — not objects to filter. That's why every assessment session is honest, private-by-default, and designed to give candidates a fair shot.
+        </p>
+        <p class="mt-4 text-base font-medium text-on-surface-muted">
+          Proctoring exists to give recruiters context — not to disqualify candidates automatically. Every integrity signal is presented as data, and every final decision stays with the human recruiter.
+        </p>
+      </div>
+
+      <!-- Pre-session checklist mockup -->
+      <div class="overflow-hidden rounded-2xl border border-border bg-[#0c1526] p-6">
+        <div class="mb-4 flex items-center gap-3">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-white">
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none">
+              <path d="M8 2L2 5v4c0 3.5 2.5 6.5 6 7 3.5-.5 6-3.5 6-7V5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-bold text-white">Before You Begin</p>
+            <p class="text-[10px] text-white/40">Frontend Engineer · QuickRuit Assessment</p>
+          </div>
+        </div>
+
+        <!-- Checklist items -->
+        <div class="space-y-2.5 mb-5">
+          {[
+            { label: '⏱ Duration', val: 'Approximately 45 minutes' },
+            { label: '📋 Sections', val: 'Aptitude (20 Qs) + Technical (10 Qs)' },
+            { label: '🔒 Proctoring', val: 'Tab-switch tracking · Face presence (optional)' },
+            { label: '📷 Camera', val: 'Only for AI interview · Not required for aptitude' },
+            { label: '🛡 Data', val: 'In-browser only · No video stored without consent' },
+          ].map(item => (
+            <div class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-2.5">
+              <span class="text-[11px] text-white/50">{item.label}</span>
+              <span class="text-[11px] font-semibold text-white text-right">{item.val}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Consent declaration -->
+        <div class="rounded-xl border border-primary/20 bg-primary/10 p-4 mb-4">
+          <p class="text-[11px] font-medium leading-relaxed text-white/80">
+            By starting, you agree to QuickRuit's <span class="font-bold text-primary">Privacy Policy</span> and understand that assessment performance data will be shared with the recruiting company. No personally identifiable video is stored without your explicit consent.
+          </p>
+        </div>
+
+        <button class="w-full rounded-xl bg-primary py-3 text-sm font-bold text-white hover:bg-primary-dark transition-colors">
+          I Understand — Start Assessment →
+        </button>
+      </div>
+    </div>
+
+    <!-- 4 integrity features grid -->
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {integrityFeatures.map(f => (
+        <div class={`rounded-2xl border p-6 transition-all hover:-translate-y-1 hover:shadow-card ${f.color}`}>
+          <div class={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl text-white ${f.iconBg}`}>
+            <div class="h-5 w-5" set:html={f.icon} />
+          </div>
+          <h3 class="mb-2 text-sm font-black text-on-surface">{f.title}</h3>
+          <p class="text-sm font-medium leading-relaxed text-on-surface-muted">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom note -->
+    <div class="mt-10 rounded-2xl border border-border bg-surface p-6 text-center">
+      <p class="text-sm font-medium text-on-surface-muted">
+        🤝 <strong class="text-on-surface">Our commitment:</strong> We will never use audio or video to predict personality, culture fit, or emotional state. Proctoring signals are provided as context — every hiring decision is made by a human.
+      </p>
+    </div>
+  </div>
+</section>
