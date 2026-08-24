@@ -1,5 +1,6 @@
 ---
-const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'http://localhost:5173';
+const rawAppUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://www.quickruit.in';
+const APP_URL = rawAppUrl.replace(/\/$/, '');
 
 const navItems = [
   {
