@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NavBar from '../../components/NavBar.astro';
+import Footer from '../../components/Footer.astro';
+import BlogsList from '../../components/BlogsList';
+import { getCollection } from 'astro:content';
+
+const MEDIUM_USERNAME = 'rahulshrivastwa1';
+let mediumPosts = [];
+
+// Fetch Medium posts at BUILD time
+try {
+  const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${MEDIUM_USERNAME}`);
+  const data = await res.json();
+  if (data.status === 'ok' && data.items?.length > 0) {
+    mediumPosts = data.items.slice(0, 6).map((item: any) => ({
+      type: 'medium',
+      title: item.title,
+      pubDate: item.pubDate,
+      link: item.link,
+      thumbnail: item.thumbnail || '',
+      dateFormatted: new Date(item.pubDate).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      }),
+    }));
+  }
+} catch (e) {
+  console.error("Failed to fetch medium posts at build time:", e);
+}
+
+// Fetch local posts
+const allBlogs = await getCollection('blogs');
+const localPosts = allBlogs.map((post) => ({
+  type: 'local',
+  title: post.data.title,
+  slug: post.data.slug || post.slug,
+  date: new Date(post.data.date).toISOString(),
+  category: post.data.category,
+  readTime: post.data.readTime,
+  excerpt: post.data.excerpt,
+  image: post.data.image,
+})).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+---
+
+<Layout title="Blogs | QuickRuit" description="Insights on Smarter Hiring">
+  <NavBar />
+  
+  <div class="bg-surface min-h-screen">
+    <!-- Hero Section -->
+    <section class="bg-white border-b border-zinc-100 pt-32 pb-10">
+      <div class="max-w-5xl mx-auto px-6 text-center">
+        <p class="text-[11px] font-black uppercase tracking-[0.2em] text-blue-600 mb-3">
+          QuickRuit Resources
+        </p>
+        <h1 class="text-3xl md:text-4xl font-black tracking-tight text-zinc-900">
+          Insights on Smarter Hiring
+        </h1>
+        <p class="mt-3 text-zinc-500 text-sm max-w-md mx-auto">
+          AI hiring trends, bias-free strategies, and practical guides for modern HR teams.
+        </p>
+      </div>
+    </section>
+
+    <!-- Client-Side Interactive List -->
+    <BlogsList client:load localPosts={localPosts} mediumPosts={mediumPosts} />
+  </div>
+
+  <Footer />
+</Layout>
