@@ -1,0 +1,49 @@
+backend:
+  name: github
+  repo: Rex-Kartik/quickruitz-landing
+  branch: main
+  base_url: https://quickruitz-landing.kartik-6c9.workers.dev/
+  auth_endpoint: api/auth
+
+media_folder: "public/images/blogs" 
+public_folder: "/images/blogs"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blogs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Slug (URL Route)",
+          name: "slug",
+          widget: "string",
+          hint: "Example: hiring-problems-recruitment (No spaces, use dashes)",
+        }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "string",
+          default: "Hiring Strategy",
+        }
+      - {
+          label: "Read Time",
+          name: "readTime",
+          widget: "string",
+          default: "5 min read",
+        }
+      - {
+          label: "Excerpt (Short Description)",
+          name: "excerpt",
+          widget: "text",
+        }
+      - {
+          label: "Cover Image",
+          name: "image",
+          widget: "image",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
