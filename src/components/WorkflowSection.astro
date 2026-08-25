@@ -1,222 +1,411 @@
----
-const pipeline = [
+﻿---
+const steps = [
   {
-    id: '01',
-    phase: 'Setup',
-    title: 'Job Created',
-    desc: 'Post a role with your JD. QuickRuit matches it to the right assessment template and auto-invites candidates via email or a shareable link.',
+    id: "01",
+    phase: "Create",
+    title: "Create the role",
+    desc: "Post a job on QuickRuit, share the link on any job board, or embed it directly on your own careers page.",
     icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M9 12h6M9 16h6M9 8h3M5 4h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1z"/></svg>`,
-    color: 'bg-blue-50 border-blue-100',
-    iconBg: 'bg-blue-100',
-    iconColor: 'text-blue-600',
-    dotColor: 'bg-blue-500',
-    lineColor: 'from-blue-200',
+    image: "/images/workflow/JD.png",
+    hubTitle: "Post in seconds",
   },
   {
-    id: '02',
-    phase: 'Screening',
-    title: 'Resumes Screened',
-    desc: 'AI parses every uploaded resume against the JD. Top candidates are identified and routed to the assessment — before you read a single CV.',
-    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><path d="M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/><path d="M9 12l2 2 4-4"/></svg>`,
-    color: 'bg-indigo-50 border-indigo-100',
-    iconBg: 'bg-indigo-100',
-    iconColor: 'text-indigo-600',
-    dotColor: 'bg-indigo-500',
-    lineColor: 'from-indigo-200',
+    id: "02",
+    phase: "Evaluate",
+    title: "Candidates get evaluated by Ryan, your AI recruiter",
+    desc: "Adaptive assessments and a real AI-led interview — no scheduling, no manual screening calls.",
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><path d="M10 7v3l2 2"/></svg>`,
+    image: "/images/workflow/aieval.png",
+    hubTitle: "AI-Powered",
+    badge: "AI-Powered",
   },
   {
-    id: '03',
-    phase: 'Assessment',
-    title: 'Candidate Assessed',
-    desc: 'Each candidate completes a timed aptitude + role-specific technical assessment in a proctored, browser-native environment. No app download needed.',
-    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
-    color: 'bg-violet-50 border-violet-100',
-    iconBg: 'bg-violet-100',
-    iconColor: 'text-violet-600',
-    dotColor: 'bg-violet-500',
-    lineColor: 'from-violet-200',
-  },
-  {
-    id: '04',
-    phase: 'Adaptation',
-    title: 'Difficulty Adapts',
-    desc: 'Questions adjust in real-time based on each answer. Strong candidates face harder problems — revealing their true ceiling, not just their floor.',
-    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
-    color: 'bg-amber-50 border-amber-100',
-    iconBg: 'bg-amber-100',
-    iconColor: 'text-amber-600',
-    dotColor: 'bg-amber-500',
-    lineColor: 'from-amber-200',
-    badge: 'Unique to QuickRuit',
-  },
-  {
-    id: '05',
-    phase: 'Interview',
-    title: 'AI Video Interview',
-    desc: 'Candidates record async video responses to role-relevant questions. The AI generates follow-up questions based on prior answers — like a real interview.',
-    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M15 10l4.553-2.277A1 1 0 0121 8.72v6.56a1 1 0 01-1.447.9L15 14v-4z"/><rect x="3" y="7" width="12" height="10" rx="2"/></svg>`,
-    color: 'bg-pink-50 border-pink-100',
-    iconBg: 'bg-pink-100',
-    iconColor: 'text-pink-600',
-    dotColor: 'bg-pink-500',
-    lineColor: 'from-pink-200',
-    badge: 'Beta',
-  },
-  {
-    id: '06',
-    phase: 'Challenge',
-    title: 'Technical Challenge',
-    desc: 'For technical roles, candidates complete a live coding problem in a sandboxed environment. Their solution, complexity, and approach are all captured.',
-    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 9l-3 3 3 3M16 9l3 3-3 3M11 6l-2 8"/></svg>`,
-    color: 'bg-emerald-50 border-emerald-100',
-    iconBg: 'bg-emerald-100',
-    iconColor: 'text-emerald-600',
-    dotColor: 'bg-emerald-500',
-    lineColor: 'from-emerald-200',
-  },
-  {
-    id: '07',
-    phase: 'Evidence',
-    title: 'Evidence Generated',
-    desc: 'The AI synthesizes every data point — scores, trajectories, answers, video responses — into structured evidence statements about each candidate\'s capabilities.',
-    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M9 3v11M6 11l3 3 3-3M4 17h12"/></svg>`,
-    color: 'bg-teal-50 border-teal-100',
-    iconBg: 'bg-teal-100',
-    iconColor: 'text-teal-600',
-    dotColor: 'bg-teal-500',
-    lineColor: 'from-teal-200',
-    highlight: true,
-  },
-  {
-    id: '08',
-    phase: 'Scorecard',
-    title: 'Unified Scorecard',
-    desc: 'One scorecard, all signals. Aptitude, technical depth, coding quality, and interview performance combined into a single ranked view — with evidence for every score.',
+    id: "03",
+    phase: "Review",
+    title: "Wake up to a ranked shortlist",
+    desc: "Every candidate scored and ranked, with a detailed, evidence-backed scorecard — ready the next morning.",
     icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 16h2v-6H4zM9 16h2V8H9zM14 16h2V4h-2z"/></svg>`,
-    color: 'bg-primary-light border-border-blue',
-    iconBg: 'bg-primary/10',
-    iconColor: 'text-primary',
-    dotColor: 'bg-primary',
-    lineColor: 'from-primary/20',
+    image: "/images/workflow/rank.png",
+    hubTitle: "Auto Shortlist",
   },
   {
-    id: '09',
-    phase: 'Decision',
-    title: 'Recruiter Decides',
-    desc: 'You see a ranked shortlist with scores, evidence, and AI reasoning. You make the final call — QuickRuit gives you the proof, not the decision.',
-    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>`,
-    color: 'bg-emerald-50 border-emerald-100',
-    iconBg: 'bg-emerald-500',
-    iconColor: 'text-white',
-    dotColor: 'bg-emerald-600',
-    lineColor: 'from-emerald-200',
+    id: "04",
+    phase: "Schedule",
+    title: "Schedule the final round",
+    desc: "Bring only your strongest candidates to a live interview.",
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="3" y="4" width="14" height="14" rx="2"/><path d="M16 2v4M8 2v4M3 10h14"/></svg>`,
+    image: "/images/workflow/dash.png",
+    hubTitle: "Live Dashboard",
   },
+  {
+    id: "05",
+    phase: "Decide",
+    title: "Make better hiring decisions",
+    desc: "Faster, backed by evidence — not a resume and a hunch.",
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>`,
+    image: "/images/workflow/image.png",
+    hubTitle: "Hire with Confidence",
+    isFinal: true,
+  },
+];
+
+const iconGradients = [
+  { from: "#0052FF", to: "#4f46e5", glow: "rgba(0,82,255,0.35)" },
+  { from: "#7c3aed", to: "#a855f7", glow: "rgba(139,92,246,0.35)" },
+  { from: "#4f46e5", to: "#6366f1", glow: "rgba(99,102,241,0.35)" },
+  { from: "#f59e0b", to: "#f97316", glow: "rgba(245,158,11,0.35)" },
+  { from: "#10b981", to: "#14b8a6", glow: "rgba(16,185,129,0.35)" },
+];
+
+const accentBgs = [
+  "rgba(0,82,255,0.06)",
+  "rgba(124,58,237,0.06)",
+  "rgba(79,70,229,0.06)",
+  "rgba(245,158,11,0.06)",
+  "rgba(16,185,129,0.06)",
 ];
 ---
 
-<section class="bg-surface-blue py-28" id="pipeline">
-  <div class="mx-auto max-w-7xl px-6">
+<section
+  id="how-it-works"
+  class="relative overflow-hidden py-12 sm:py-24"
+  style="background: #f8faff;"
+>
+  <!-- Top gradient line -->
+  <div
+    class="absolute top-0 left-0 right-0 h-px"
+    style="background: linear-gradient(to right, transparent, rgba(0,82,255,0.4), transparent);"
+  ></div>
+
+  <!-- Decorative blobs -->
+  <div
+    class="pointer-events-none absolute left-1/2 top-1/4 aspect-square w-full max-w-[500px] -translate-x-1/2 rounded-full blur-[100px]"
+    style="background: rgba(124,58,237,0.05);"
+  ></div>
+  <div
+    class="pointer-events-none absolute bottom-1/4 right-0 aspect-square w-full max-w-[300px] rounded-full blur-[80px]"
+    style="background: rgba(0,82,255,0.04);"
+  ></div>
+
+  <!-- Dot grid -->
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background-image: linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);"
+  ></div>
+
+  <div class="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6">
 
     <!-- Header -->
-    <div class="mb-20 text-center">
-      <span class="mb-4 inline-block rounded-pill border border-primary/20 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
-        The Evidence Pipeline
+    <div class="hiw-header mb-12 text-center sm:mb-16" style="opacity:0; transform:translateY(16px);">
+      <span class="mb-4 inline-block rounded-full border border-primary/20 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+        How It Works
       </span>
-      <h2 class="text-[40px] sm:text-[48px] font-black leading-[1.1] tracking-tight text-on-surface">
-        From application to evidence.<br />
-        <span class="text-primary">9 steps. One connected truth.</span>
+      <h2 class="mb-3 px-2 text-2xl font-black tracking-tight text-on-surface sm:mb-4 sm:text-4xl">
+        From job post to hiring decision &mdash;
+        <span style="background: linear-gradient(to right, #7c3aed, #4f46e5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          in five steps.
+        </span>
       </h2>
-      <p class="mx-auto mt-5 max-w-xl text-lg font-medium leading-relaxed text-on-surface-muted">
-        Every step generates data. Every data point becomes a signal. Every signal becomes evidence in a scorecard your team can act on.
-      </p>
     </div>
 
-    <!-- Desktop: vertical timeline -->
-    <div class="hidden lg:block">
-      <div class="relative">
-        <!-- Central spine line -->
-        <div class="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-border via-primary/20 to-emerald-200"></div>
+    <!-- Desktop timeline (lg+) -->
+    <div class="hiw-core relative hidden lg:block" style="opacity:0;">
 
-        <div class="space-y-0">
-          {pipeline.map((step, i) => (
-            <div class={`relative flex items-center gap-0 ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-              
-              <!-- Content card -->
-              <div class={`w-[calc(50%-2.5rem)] ${i % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                <div class={`group relative rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-card ${step.color}`}>
-                  {step.badge && (
-                    <span class={`mb-2 inline-block rounded-pill px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-widest ${step.badge === 'Beta' ? 'bg-amber-100 text-amber-700' : 'bg-primary/10 text-primary'}`}>
-                      {step.badge}
-                    </span>
-                  )}
-                  <div class={`mb-3 flex items-center gap-3 ${i % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-muted">{step.phase}</p>
+      <!-- Vertical spine track -->
+      <div
+        class="absolute left-1/2 -translate-x-1/2 overflow-hidden"
+        style="top:4px; bottom:4px; width:2px; background: rgba(0,82,255,0.08);"
+      >
+        <div
+          class="hiw-spine w-full h-full"
+          style="background: linear-gradient(to bottom, #7c3aed, #4f46e5, #10b981); transform: scaleY(0); transform-origin: top; transition: transform 1.5s ease-in-out;"
+        ></div>
+      </div>
+
+      <!-- Steps -->
+      <div class="flex flex-col gap-8 lg:gap-12">
+        {steps.map((step, i) => {
+          const grad = iconGradients[i];
+          const accent = accentBgs[i];
+          const isLeft = i % 2 === 0;
+          return (
+            <div
+              class="hiw-row relative flex w-full items-center"
+              style={`flex-direction: ${isLeft ? "row" : "row-reverse"}; opacity:0; transform: translateY(30px); transition: opacity 0.6s cubic-bezier(0.23,1,0.32,1), transform 0.6s cubic-bezier(0.23,1,0.32,1);`}
+              data-left={isLeft ? "true" : "false"}
+            >
+              <!-- CARD side (45%) -->
+              <div class="hiw-card-wrap w-[45%]">
+                <div
+                  class="relative z-10 overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+                  style="transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;"
+                >
+                  <!-- Accent overlay -->
+                  <div
+                    class="hiw-accent pointer-events-none absolute inset-0 opacity-0"
+                    style={`background: ${accent}; transition: opacity 0.5s;`}
+                  ></div>
+
+                  <div class="relative z-10">
+                    <!-- Top row: gradient icon + text tags -->
+                    <div class="mb-5 flex items-center gap-4">
+                      <div
+                        class="hiw-icon-box flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl shadow-md"
+                        style={`background: linear-gradient(135deg, ${grad.from}, ${grad.to}); box-shadow: 0 4px 14px ${grad.glow}; transition: transform 0.3s;`}
+                      >
+                        <span class="h-5 w-5 text-white" set:html={step.icon} />
+                      </div>
+                      <div>
+                        <div class="mb-1 flex flex-wrap items-center gap-1.5">
+                          <span class="rounded bg-slate-100 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-slate-600">
+                            Step {step.id}
+                          </span>
+                          {step.isFinal && (
+                            <span class="rounded bg-emerald-50 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-emerald-600">
+                              Final
+                            </span>
+                          )}
+                          {step.badge && (
+                            <span class="rounded bg-primary/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-primary">
+                              {step.badge}
+                            </span>
+                          )}
+                        </div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-muted">
+                          {step.phase}
+                        </p>
+                      </div>
+                    </div>
+
+                    <h3 class="mb-2 text-base font-bold leading-snug text-slate-900">
+                      {step.title}
+                    </h3>
+                    <p class="text-sm leading-relaxed text-slate-500">
+                      {step.desc}
+                    </p>
                   </div>
-                  <h3 class="mb-2 text-xl font-black text-on-surface">{step.title}</h3>
-                  <p class="text-sm font-medium leading-relaxed text-on-surface-muted">{step.desc}</p>
                 </div>
               </div>
 
-              <!-- Central dot + step number -->
-              <div class="relative z-10 flex w-20 flex-shrink-0 flex-col items-center">
-                <div class={`flex h-10 w-10 items-center justify-center rounded-full border-4 border-white shadow-md ${step.iconBg}`}>
-                  <div class={`h-4 w-4 ${step.iconColor}`} set:html={step.icon} />
+              <!-- CENTRAL spine node (10%) -->
+              <div class="relative flex w-[10%] flex-col items-center">
+                <div
+                  class="hiw-node flex items-center justify-center rounded-full border-[2.5px] bg-white shadow-sm"
+                  style={`width:0.875rem; height:0.875rem; border-color: rgba(0,82,255,0.2); transform:scale(0); transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.2s;`}
+                >
+                  <div class="h-full w-full rounded-full" style={`background: linear-gradient(135deg, ${grad.from}, ${grad.to});`}></div>
                 </div>
-                <span class="mt-1.5 text-[9px] font-black tracking-widest text-on-surface-muted">{step.id}</span>
               </div>
 
-              <!-- Empty spacer for opposite side -->
-              <div class="w-[calc(50%-2.5rem)]"></div>
+              <!-- IMAGE side (45%) -->
+              <div class="hiw-img-wrap w-[45%]">
+                <div class="relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-[0_15px_40px_rgba(0,0,0,0.08)] group">
+                  <img
+                    src={step.image}
+                    alt={step.title}
+                    class="h-auto w-full object-cover object-left-top transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <!-- Dark gradient overlay -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                  <!-- Floating hub badge -->
+                  <div class="absolute bottom-4 left-4 flex items-center gap-2 rounded-xl border border-white/50 bg-white/95 px-3 py-2 shadow-lg backdrop-blur-md">
+                    <svg class="h-4 w-4 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-sm font-bold text-slate-800">{step.hubTitle}</span>
+                  </div>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </div>
 
-    <!-- Mobile: vertical linear list -->
-    <div class="lg:hidden">
+    <!-- Mobile: vertical linear list (below lg) -->
+    <div class="hiw-mobile lg:hidden">
       <div class="relative pl-8">
         <!-- Left spine -->
-        <div class="absolute left-3 top-0 bottom-0 w-px bg-gradient-to-b from-border via-primary/20 to-emerald-200"></div>
+        <div class="absolute left-3 top-0 bottom-0 w-px" style="background: linear-gradient(to bottom, #7c3aed, #4f46e5, #10b981);"></div>
 
-        <div class="space-y-6">
-          {pipeline.map((step) => (
-            <div class="relative">
-              <!-- Timeline dot -->
-              <div class={`absolute -left-[21px] top-5 h-4 w-4 rounded-full border-2 border-white shadow-sm ${step.dotColor}`}></div>
-              
-              <div class={`rounded-2xl border p-5 transition-all hover:shadow-card ${step.color}`}>
-                <div class="mb-2 flex items-center justify-between">
-                  <span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-muted">{step.phase} · {step.id}</span>
-                  {step.badge && (
-                    <span class={`rounded-pill px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest ${step.badge === 'Beta' ? 'bg-amber-100 text-amber-700' : 'bg-primary/10 text-primary'}`}>
-                      {step.badge}
-                    </span>
-                  )}
+        <div class="flex flex-col gap-6">
+          {steps.map((step, i) => {
+            const grad = iconGradients[i];
+            const accent = accentBgs[i];
+            return (
+              <div
+                class="hiw-mobile-step relative"
+                style="opacity:0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease;"
+              >
+                <!-- Timeline dot -->
+                <div
+                  class="absolute -left-[21px] top-5 h-4 w-4 rounded-full border-2 border-white shadow-sm"
+                  style={`background: linear-gradient(135deg, ${grad.from}, ${grad.to});`}
+                ></div>
+
+                <!-- Card -->
+                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <div class="mb-4 flex items-center gap-3">
+                    <div
+                      class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl shadow-md"
+                      style={`background: linear-gradient(135deg, ${grad.from}, ${grad.to}); box-shadow: 0 4px 14px ${grad.glow};`}
+                    >
+                      <span class="h-5 w-5 text-white" set:html={step.icon} />
+                    </div>
+                    <div>
+                      <div class="flex flex-wrap items-center gap-1 mb-0.5">
+                        <span class="rounded bg-slate-100 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-slate-600">
+                          Step {step.id}
+                        </span>
+                        {step.isFinal && (
+                          <span class="rounded bg-emerald-50 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-emerald-600">
+                            Final
+                          </span>
+                        )}
+                        {step.badge && (
+                          <span class="rounded bg-primary/10 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-primary">
+                            {step.badge}
+                          </span>
+                        )}
+                      </div>
+                      <p class="text-[9px] font-bold uppercase tracking-widest text-on-surface-muted">{step.phase}</p>
+                    </div>
+                  </div>
+                  <h3 class="mb-1.5 text-sm font-bold leading-snug text-slate-900">{step.title}</h3>
+                  <p class="text-xs leading-relaxed text-slate-500">{step.desc}</p>
                 </div>
-                <h3 class="mb-1.5 text-lg font-black text-on-surface">{step.title}</h3>
-                <p class="text-sm font-medium leading-relaxed text-on-surface-muted">{step.desc}</p>
+
+                <!-- Image -->
+                <div class="mt-3 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm group">
+                  <div class="relative">
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      class="h-auto w-full object-cover object-left-top transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-3 left-3 flex items-center gap-2 rounded-xl border border-white/50 bg-white/95 px-3 py-1.5 shadow-lg backdrop-blur-md">
+                      <svg class="h-3.5 w-3.5 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-xs font-bold text-slate-800">{step.hubTitle}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
-    </div>
-
-    <!-- Bottom note -->
-    <div class="mt-16 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-center sm:gap-6">
-      <p class="text-sm font-medium text-on-surface-muted">
-        Human recruiters make every final hiring decision. QuickRuit provides the evidence — not the answer.
-      </p>
-      <a
-        href="#features"
-        class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
-      >
-        Explore each module
-        <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </a>
     </div>
   </div>
 </section>
+
+<script>
+  // ------- Header fade-up -------
+  const header = document.querySelector(".hiw-header") as HTMLElement | null;
+  if (header) {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          header.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          if (e.isIntersecting) {
+            header.style.opacity = "1";
+            header.style.transform = "translateY(0)";
+          } else {
+            header.style.opacity = "0";
+            header.style.transform = "translateY(16px)";
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    obs.observe(header);
+  }
+
+  // ------- Core + spine -------
+  const core = document.querySelector(".hiw-core") as HTMLElement | null;
+  const spine = document.querySelector(".hiw-spine") as HTMLElement | null;
+  if (core && spine) {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            core.style.opacity = "1";
+            spine.style.transform = "scaleY(1)";
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+    obs.observe(core);
+  }
+
+  // ------- Desktop rows: bidirectional fade -------
+  document.querySelectorAll<HTMLElement>(".hiw-row").forEach((row) => {
+    const node = row.querySelector<HTMLElement>(".hiw-node");
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            row.style.opacity = "1";
+            row.style.transform = "translateY(0)";
+            if (node) node.style.transform = "scale(1)";
+          } else {
+            row.style.opacity = "0";
+            row.style.transform = "translateY(30px)";
+            if (node) node.style.transform = "scale(0)";
+          }
+        });
+      },
+      { rootMargin: "-80px 0px -80px 0px" }
+    );
+    obs.observe(row);
+  });
+
+  // ------- Mobile steps: bidirectional fade -------
+  document.querySelectorAll<HTMLElement>(".hiw-mobile-step").forEach((step) => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            step.style.opacity = "1";
+            step.style.transform = "translateY(0)";
+          } else {
+            step.style.opacity = "0";
+            step.style.transform = "translateY(20px)";
+          }
+        });
+      },
+      { rootMargin: "-60px 0px -60px 0px" }
+    );
+    obs.observe(step);
+  });
+
+  // ------- Card hover: accent overlay + icon wiggle + lift -------
+  document.querySelectorAll<HTMLElement>(".hiw-card-wrap").forEach((wrap) => {
+    const overlay = wrap.querySelector<HTMLElement>(".hiw-accent");
+    const iconBox = wrap.querySelector<HTMLElement>(".hiw-icon-box");
+    const card = wrap.querySelector<HTMLElement>("div[class*='rounded-3xl']");
+    wrap.addEventListener("mouseenter", () => {
+      if (overlay) overlay.style.opacity = "1";
+      if (iconBox) iconBox.style.transform = "scale(1.06) rotate(-3deg)";
+      if (card) {
+        card.style.boxShadow = "0 8px 32px rgba(0,0,0,0.08)";
+        card.style.borderColor = "rgba(0,82,255,0.2)";
+        card.style.transform = "translateY(-2px)";
+      }
+    });
+    wrap.addEventListener("mouseleave", () => {
+      if (overlay) overlay.style.opacity = "0";
+      if (iconBox) iconBox.style.transform = "";
+      if (card) {
+        card.style.boxShadow = "";
+        card.style.borderColor = "";
+        card.style.transform = "";
+      }
+    });
+  });
+</script>
