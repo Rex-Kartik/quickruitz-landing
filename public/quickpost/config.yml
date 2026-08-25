@@ -2,7 +2,7 @@ backend:
   name: github
   repo: Rex-Kartik/quickruitz-landing
   branch: main
-  base_url: https://quickruitz-landing.kartik-6c9.workers.dev/
+  base_url: https://www.quickruit.in
   auth_endpoint: api/auth
 
 media_folder: "public/images/blogs" 
